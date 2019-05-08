@@ -26,7 +26,9 @@ const login = (req, user) => {
 // SIGNUP
 router.post('/signup', (req, res, next) => {
 
-  const {username, password} = req.body;
+  const {username, password, 
+    // userPhoto
+  } = req.body;
 
   console.log('username', username)
   console.log('password', password)
@@ -46,7 +48,8 @@ router.post('/signup', (req, res, next) => {
 
     return new User({
       username,
-      password: hashPass
+      password: hashPass,
+      // userPhoto,
     }).save();
   })
   .then( savedUser => login(req, savedUser)) // Login the user using passport
@@ -54,6 +57,8 @@ router.post('/signup', (req, res, next) => {
   .catch(e => next(e));
 });
 
+
+//LOGIN
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
     
@@ -76,21 +81,29 @@ router.get('/currentuser', (req,res,next) => {
   }
 })
 
-//Hacer bien
-// router.post('/:id', uploadCloud.single('profilePhoto'), (req, res, next) => {
-//   let userPhoto = req.file.url;
-//   const id = req.params.id
-//   const {username, password, lang, country, description, genre, age, rate, travels } = req.body;
-//   User.findByIdAndUpdate(id, {
-//     userPhoto
-//   }, { new: true })
-//     .then(user => {
-//       res.json(user)
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     })
-// })
+
+//EDIT USER
+
+router.post('/photo/:id', 
+uploadCloud.single('photo'), 
+(req, res, next) => {
+  var imgPath = req.file.url;
+  var imgName = req.file.originalname;
+  console.log(imgPath, imgName)
+  User.findByIdAndUpdate({_id: req.params.id}, 
+    {
+    imgPath,
+    imgName,
+  },
+   { new: true })
+  .then(user => {
+    console.log(user)
+      res.json(user)
+    })
+    .catch(error => {
+      console.log(error);
+    })
+})
 
 
 // router.post(

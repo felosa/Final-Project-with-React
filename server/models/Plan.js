@@ -7,13 +7,16 @@ const planSchema = new Schema({
   date: Number,
   type: String,
   description: String,
-  image: String,
   lang: String,
   genre: String,
   hour: Number,
   year: Number,
   place: String,
+  imgPath: String,
+  imgName: String,
   ownerRate: Number,
+  author: { type: Schema.Types.ObjectId, ref: 'User' },
+  colaborate: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 }, {
   timestamps: {
     createdAt: 'created_at',

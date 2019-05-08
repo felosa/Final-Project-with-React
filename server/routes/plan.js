@@ -21,7 +21,7 @@ router.post('/new', (req, res) => {
   console.log(req.body, "body")
  
 
-  const {name, type, place, image, date, lang, genre, rate} = req.body;
+  const {name, type, place, date, lang, genre, rate} = req.body;
   const plan = {
     name,
     type,
@@ -31,8 +31,6 @@ router.post('/new', (req, res) => {
     lang,
     genre,
     rate,
-    image,
-    
   }
   const newPlan = new Plan(plan);
   newPlan.save()

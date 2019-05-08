@@ -10,8 +10,14 @@ const userSchema = new Schema({
   genre: String,
   year: Number,
   rate: Number,
-  userPhoto: String,
+  imgPath: String,
+  imgName: String,
   travels: Array,
+  role: {
+    type: String,
+    enum : ['author', 'colaborator', 'normalUser'],
+    default : 'normalUser'
+  },
 }, {
   timestamps: {
     createdAt: 'created_at',
