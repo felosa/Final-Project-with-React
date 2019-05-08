@@ -3,14 +3,17 @@ const Schema   = mongoose.Schema;
 
 const planSchema = new Schema({
   name: String,
-  type: String,
-  place: String,
-  image: String,
+  city: String,
   date: Number,
+  type: String,
+  description: String,
+  image: String,
   lang: String,
   genre: String,
-  Rate: Number,
-  image: String,
+  hour: Number,
+  year: Number,
+  place: String,
+  ownerRate: Number,
 }, {
   timestamps: {
     createdAt: 'created_at',

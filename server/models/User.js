@@ -8,8 +8,8 @@ const userSchema = new Schema({
   country: String,
   description: String,
   genre: String,
-  age: Number,
-  Rate: Number,
+  year: Number,
+  rate: Number,
   userPhoto: String,
   travels: Array,
 }, {

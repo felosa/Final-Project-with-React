@@ -73,5 +73,11 @@ app.locals.title = 'Express - Generated with IronGenerator';
 const authRouter = require('./routes/auth');
 app.use('/api/auth', authRouter);
 
+const travelRouter = require('./routes/travel');
+app.use('/api/travel', travelRouter);
+
+const planRouter = require('./routes/plan');
+app.use('/api/plan', planRouter);
+
 
 module.exports = app;

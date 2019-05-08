@@ -3,9 +3,11 @@ const Schema   = mongoose.Schema;
 
 const travelSchema = new Schema({
   name: String,
-  country: String,
   city: String,
+  country: String,
+  description: String,
   date: String,
+  image: String,
 }, {
   timestamps: {
     createdAt: 'created_at',

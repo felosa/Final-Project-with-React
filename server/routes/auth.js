@@ -76,20 +76,50 @@ router.get('/currentuser', (req,res,next) => {
   }
 })
 
+//Hacer bien
+// router.post('/:id', uploadCloud.single('profilePhoto'), (req, res, next) => {
+//   let userPhoto = req.file.url;
+//   const id = req.params.id
+//   const {username, password, lang, country, description, genre, age, rate, travels } = req.body;
+//   User.findByIdAndUpdate(id, {
+//     userPhoto
+//   }, { new: true })
+//     .then(user => {
+//       res.json(user)
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     })
+// })
 
-router.post('/:userId', uploadCloud.single('profilePhoto'), (req, res, next) => {
-  let userPhoto = req.file.url;
-  User.findByIdAndUpdate(req.params.userId, {
-    userPhoto
-  }, { new: true })
-    .then(user => {
-      res.json(user)
-    })
-    .catch(error => {
-      console.log(error);
-    })
-})
 
+// router.post(
+//   "/miperfil/:id/edit",
+//   uploadCloud.single("photo"),
+//   (req, res, next) => {
+//     const { username, email, password, phone, photo, rating } = req.body;
+//     var usuario = req.user;
+//     console.log("mi test ", imgPath);
+//     if (req.file === undefined) {
+//       var imgPath = usuario.imgPath;
+//       var imgName = usuario.imgName;
+//     } else {
+//       var imgPath = req.file.url;
+//       var imgName = req.file.originalname;
+//     }
+
+//     User.findOneAndUpdate(
+//       { _id: req.params.id },
+//       { username, email, phone, imgPath, imgName }
+//     )
+//       .then(celebrity => {
+//         res.redirect("/auth/miperfil");
+//       })
+//       .catch(err => {
+//         res.render("./error", err);
+//       });
+//   }
+// );
 
 
 router.get('/logout', (req,res) => {
