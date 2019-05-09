@@ -13,6 +13,11 @@ class Signup extends Component {
       user: {
         username: "",
         password: "",
+        lang: "",
+        country: "",
+        description:"",
+        genre: "",
+        year: 1990,
         redirect: false,
       },      
     };
@@ -22,16 +27,24 @@ class Signup extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const username = this.state.user.username;
-    const password = this.state.user.password;
+    // , lang, country, description, genre,year
+    const {username, password,lang, country, description, genre,year} = this.state.user
+    console.log(username, password)
 
-    this.service.signup(username, password)
+
+    // , lang, country, description, genre,year
+    this.service.signup(username, password, lang, country, description, genre,year)
     .then( () => {
-      console.log()
+      console.log(username)
         this.setState({
             username: "", 
             password: "",
-            redirect: true,
+            lang: "",
+            country: "",
+            description: "",
+            genre: "",
+            year: 1990,
+            redirect: true
         });
         // this.props.getUser(response)
     })
@@ -48,7 +61,7 @@ class Signup extends Component {
 
   render(){
     if (this.state.redirect) {
-      return <Redirect to='/login' />
+      return <Redirect to='/login'/>
     }
     
     return(
@@ -59,6 +72,21 @@ class Signup extends Component {
           
           <label>Password:</label>
           <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
+
+          <label>Languaje:</label>
+          <input type="text" name="lang" value={this.state.lang} onChange={ e => this.handleChange(e)}/>
+
+          <label>Description:</label>
+          <input type="text" name="description" value={this.state.description} onChange={ e => this.handleChange(e)}/>
+          
+          <label>Country:</label>
+          <input type="text" name="country" value={this.state.country} onChange={ e => this.handleChange(e)} />
+         
+          <label>Genre:</label>
+          <input type="text" name="genre" value={this.state.genre} onChange={ e => this.handleChange(e)}/>
+          
+          <label>Year:</label>
+          <input type="number" name="year" value={this.state.year} onChange={ e => this.handleChange(e)} />
           
           <input type="submit" value="Signup" />
         </form>

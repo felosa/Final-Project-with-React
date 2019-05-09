@@ -20,7 +20,7 @@ router.get('/one/:id', (req, res, next) => {
 router.post('/new', (req, res) => {
   console.log(req.body, "body")
  
-
+  const author= res.user._id
   const {name, type, place, date, lang, genre, rate} = req.body;
   const plan = {
     name,
@@ -31,6 +31,7 @@ router.post('/new', (req, res) => {
     lang,
     genre,
     rate,
+    author //añado autor aqui
   }
   const newPlan = new Plan(plan);
   newPlan.save()

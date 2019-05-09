@@ -6,7 +6,7 @@ import { Link, Redirect } from 'react-router-dom';
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = { username: '', password: '', logged: false, error: '',redirect: false };
+        this.state = { username: '', password: '',error: '',redirect: false };
         this.service = new AuthService();
     }
 
@@ -17,7 +17,7 @@ class Login extends Component {
         this.service.login(username, password)
              .then(() => {            
                  this.setState({ redirect:true, 
-                  username: "", password: "", logged: true },
+                  username: "", password: "" },
                    );
              })
             //  .catch(error => {
@@ -42,7 +42,7 @@ class Login extends Component {
             <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
 
             <label>Password:</label>
-            <textarea name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
+            <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
             
             <input type="submit" value="Login" />
           </form>

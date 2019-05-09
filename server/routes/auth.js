@@ -25,13 +25,12 @@ const login = (req, user) => {
 
 // SIGNUP
 router.post('/signup', (req, res, next) => {
-
-  const {username, password, 
-    // userPhoto
-  } = req.body;
+// , lang, country, description, genre,year, photo 
+  const {username, password, lang, country, description, genre,year} = req.body;
 
   console.log('username', username)
   console.log('password', password)
+  console.log('lang', lang)
 
   // Check for non empty user or password
   if (!username || !password){
@@ -45,11 +44,15 @@ router.post('/signup', (req, res, next) => {
 
     const salt     = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);
-
+     
     return new User({
       username,
       password: hashPass,
-      // userPhoto,
+      lang,
+      country, 
+      description,
+      genre,
+      year,
     }).save();
   })
   .then( savedUser => login(req, savedUser)) // Login the user using passport
@@ -105,34 +108,6 @@ uploadCloud.single('photo'),
     })
 })
 
-
-// router.post(
-//   "/miperfil/:id/edit",
-//   uploadCloud.single("photo"),
-//   (req, res, next) => {
-//     const { username, email, password, phone, photo, rating } = req.body;
-//     var usuario = req.user;
-//     console.log("mi test ", imgPath);
-//     if (req.file === undefined) {
-//       var imgPath = usuario.imgPath;
-//       var imgName = usuario.imgName;
-//     } else {
-//       var imgPath = req.file.url;
-//       var imgName = req.file.originalname;
-//     }
-
-//     User.findOneAndUpdate(
-//       { _id: req.params.id },
-//       { username, email, phone, imgPath, imgName }
-//     )
-//       .then(celebrity => {
-//         res.redirect("/auth/miperfil");
-//       })
-//       .catch(err => {
-//         res.render("./error", err);
-//       });
-//   }
-// );
 
 
 router.get('/logout', (req,res) => {

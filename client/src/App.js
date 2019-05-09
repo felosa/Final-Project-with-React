@@ -42,7 +42,7 @@ class App extends Component {
       return (
         
         <div>
-        
+        <p>estas logueado</p>
           <Switch>
             {/* <ProtectedRoutes user={this.state.loggedInUser} exact path='/profile' component={Profile} checkIfLogged={this.fetchUser}/> */}
           </Switch>
@@ -52,7 +52,7 @@ class App extends Component {
     else {
       return (
         <div>
-            <p>hola</p>
+          <p>no estas logueado</p>
           <Switch>
             <Route exact path='/signup' render={() => <Signup setUser={this.setTheUser} userInSession={this.state.loggedInUser}/>} />
             <Route exact path='/login' render={() => <Login setUser={this.setTheUser} userInSession={this.state.loggedInUser} />} /> 
