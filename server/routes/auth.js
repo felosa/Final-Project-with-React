@@ -55,7 +55,10 @@ router.post('/signup', (req, res, next) => {
       year,
     }).save();
   })
-  .then( savedUser => login(req, savedUser)) // Login the user using passport
+  .then( savedUser => {
+    console.log(savedUser)
+    login(req, savedUser)
+  }) // Login the user using passport
   .then( user => res.json({status: 'signup & login successfully', user})) // Answer JSON
   .catch(e => next(e));
 });
