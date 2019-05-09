@@ -78,5 +78,7 @@ app.use('/api/travel', travelRouter);
 const planRouter = require('./routes/plan');
 app.use('/api/plan', planRouter);
 
+app.use((req, res) => {     res.sendFile(__dirname + "/public/index.html");    });
+
 
 module.exports = app;
