@@ -1,28 +1,69 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Components
+import Signup from "./components/authApi/Signup"
+import Profile from "./components/authApi/Profile"
+import Login from "./components/authApi/Login"
+// import Profile from "./components/Profile"
+// import ProtectedRoutes from "./components/auth/ProtectedRoutes"
+// Routing & DOM
+import { Switch, Route } from 'react-router-dom'
+// Service
+import authService from './components/authApi/AuthService';
+
+
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { loggedInUser: null }
+    this.service = new authService()
+  }
+
+
+  fetchUser = () => {
+
+      this.service.loggedin()
+        .then(response => {
+          console.log(response)
+          this.setState({ loggedInUser: response })})
+        .catch(x => this.setState({ loggedInUser: false }))
+    
+  }
+
+  setTheUser = (userObj) => { this.setState({ loggedInUser: userObj }) }
+
+  render() {
+
+    const { loggedInUser } = this.state
+
+    if (loggedInUser) {
+      return (
+        
+        <div>
+        
+          <Switch>
+            {/* <ProtectedRoutes user={this.state.loggedInUser} exact path='/profile' component={Profile} checkIfLogged={this.fetchUser}/> */}
+          </Switch>
+        </div>
+      )
+    }
+    else {
+      return (
+        <div>
+            <p>hola</p>
+          <Switch>
+            <Route exact path='/signup' render={() => <Signup setUser={this.setTheUser} userInSession={this.state.loggedInUser}/>} />
+            <Route exact path='/login' render={() => <Login setUser={this.setTheUser} userInSession={this.state.loggedInUser} />} /> 
+            <Route user={this.state.loggedInUser} exact path='/profile' component={Profile} />
+          </Switch>
+
+        </div>
+        
+      )
+    }
+  }
 }
 
 export default App;
