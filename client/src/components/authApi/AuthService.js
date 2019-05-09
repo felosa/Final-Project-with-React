@@ -4,11 +4,12 @@ import axios from 'axios';
 class AuthService {
   constructor() {
     this.service = axios.create({
-      // baseURL:`https://travelershare.herokuapp.com/api/auth`,
-      // baseURL:`http://localhost:3010/api`,
       baseURL:`${process.env.REACT_APP_URL}/auth`,
       withCredentials: true
     });
+    console.log(`${process.env.REACT_APP_URL}/auth`)
+
+    console.log(this.service)
   }
 
 
