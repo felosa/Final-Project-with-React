@@ -10,7 +10,8 @@ class Login extends Component {
         this.service = new AuthService();
     }
 
-    handleFormSubmit = (event) => {
+    handleFormSubmit(event) {
+      debugger
         event.preventDefault();
         const username = this.state.username;
         const password = this.state.password;
@@ -46,7 +47,7 @@ class Login extends Component {
       return(
         
         <div>
-          <form onSubmit={this.handleFormSubmit}>
+          <form onSubmit={(e) => this.handleFormSubmit(e)}>
             <label>Username:</label>
             <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
 
