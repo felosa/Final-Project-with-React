@@ -80,12 +80,14 @@ router.post('/signup', (req, res, next) => {
 //   })(req, res, next);
 // });
 
+
+
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
     
     // Check for errors
     if (err) {res.status(500).json({message: "Wrong"}); return}; 
-    if (!theUser) {res.status(401).json({message: "holaaa"}); return}
+    if (!theUser) {res.status(401).json(failureDetails); return}
 
     // Return user and logged in
     req.login(theUser, (err) => {

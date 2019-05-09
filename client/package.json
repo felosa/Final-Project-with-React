@@ -11,7 +11,7 @@
     "react-scripts": "3.0.0"
   },
   "scripts": {
-    "start": "dotenv -e .env.dev react-scripts start",
+    "start": "dotenv -e .env.dev react-scripts start",    
     "build-dev": "dotenv -e .env.dev react-scripts build",
     "build-prod": "dotenv -e .env.prod react-scripts build",
     "test": "react-scripts test",
