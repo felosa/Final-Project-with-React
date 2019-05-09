@@ -19,8 +19,10 @@ router.get('/one/:id', (req, res, next) => {
 
 router.post('/new', (req, res) => {
   console.log(req.body, "body")
+
  
-  const author= res.user._id
+  const author= req.user._id
+  console.log(author)
   const {name, type, place, date, lang, genre, rate} = req.body;
   const plan = {
     name,
