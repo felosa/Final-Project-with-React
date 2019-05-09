@@ -44,6 +44,7 @@ class App extends Component {
         <div>
         <p>estas logueado</p>
           <Switch>
+            <Route user={this.state.loggedInUser} exact path='/profile' component={Profile} />
             {/* <ProtectedRoutes user={this.state.loggedInUser} exact path='/profile' component={Profile} checkIfLogged={this.fetchUser}/> */}
           </Switch>
         </div>
@@ -56,7 +57,6 @@ class App extends Component {
           <Switch>
             <Route exact path='/signup' render={() => <Signup setUser={this.setTheUser} userInSession={this.state.loggedInUser}/>} />
             <Route exact path='/login' render={() => <Login setUser={this.setTheUser} userInSession={this.state.loggedInUser} />} /> 
-            <Route user={this.state.loggedInUser} exact path='/profile' component={Profile} />
           </Switch>
 
         </div>

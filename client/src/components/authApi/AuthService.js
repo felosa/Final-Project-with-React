@@ -14,11 +14,17 @@ class AuthService {
   signup = (username, password, lang, country, description, genre,year) => {
     return this.service.post('/signup', {username, password, lang, country, description, genre,year})
     .then(response => response.data)
+    .catch(err => console.error(err))
   }
 
   login = (username, password) => {
+    console.log(username, password)
     return this.service.post('/login', {username, password})
-    .then(response => response.data)
+    .then(response => 
+      
+      response.data
+    )
+    .catch(err => console.error(err))
   }
 
   loggedin = () => {

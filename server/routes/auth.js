@@ -14,7 +14,7 @@ const login = (req, user) => {
 
       
       if(err) {
-        reject(new Error('Something went wrong'))
+        reject(new Error(err))
       }else{
         resolve(user);
       }
@@ -65,18 +65,39 @@ router.post('/signup', (req, res, next) => {
 
 
 //LOGIN
+// router.post('/login', (req, res, next) => {
+//   console.log("hola")
+//   passport.authenticate('local', (err, theUser, failureDetails) => {
+//     console.log(failureDetails)
+//     // Check for errors
+//     if (err) next(new Error('Something went wrong')); 
+//     if (!theUser) next(failureDetails) 
+
+//     // Return user and logged in
+//     login(req, theUser).then(user => res.status(200).json(req.user))
+//       .catch(err => console.log(err));
+
+//   })(req, res, next);
+// });
+
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
     
     // Check for errors
-    if (err) next(new Error('Something went wrong')); 
-    if (!theUser) next(failureDetails)
+    if (err) {res.status(500).json({message: "Wrong"}); return}; 
+    if (!theUser) {res.status(401).json({message: "holaaa"}); return}
 
     // Return user and logged in
-    login(req, theUser).then(user => res.status(200).json(req.user));
+    req.login(theUser, (err) => {
+      if(err) {res.status(500).json({message: "Wow"}); return}
+      res.status(200).json(theUser)
+    })
 
   })(req, res, next);
 });
+
+
+
 
 
 router.get('/currentuser', (req,res,next) => {
