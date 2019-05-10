@@ -9,6 +9,7 @@ const travelSchema = new Schema({
   date: String,
   imgPath: String,
   imgName: String,
+  plans: Array,
 }, {
   timestamps: {
     createdAt: 'created_at',

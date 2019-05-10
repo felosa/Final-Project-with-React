@@ -25,8 +25,7 @@ const login = (req, user) => {
 
 // SIGNUP
 router.post('/signup', (req, res, next) => {
-// , lang, country, description, genre,year, photo 
-  const {username, password, lang, country, description, genre,year} = req.body;
+    const {username, password, lang, country, description, genre,year} = req.body;
 
   console.log('username', username)
   console.log('password', password)
@@ -64,23 +63,8 @@ router.post('/signup', (req, res, next) => {
 });
 
 
+
 //LOGIN
-// router.post('/login', (req, res, next) => {
-//   console.log("hola")
-//   passport.authenticate('local', (err, theUser, failureDetails) => {
-//     console.log(failureDetails)
-//     // Check for errors
-//     if (err) next(new Error('Something went wrong')); 
-//     if (!theUser) next(failureDetails) 
-
-//     // Return user and logged in
-//     login(req, theUser).then(user => res.status(200).json(req.user))
-//       .catch(err => console.log(err));
-
-//   })(req, res, next);
-// });
-
-
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
@@ -97,9 +81,6 @@ router.post('/login', (req, res, next) => {
 
   })(req, res, next);
 });
-
-
-
 
 
 router.get('/currentuser', (req,res,next) => {

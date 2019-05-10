@@ -3,8 +3,8 @@ import axios from "axios";
 class AuthService {
   constructor() {
     this.service = axios.create({
-      // baseURL:'http://localhost:3010/api/auth',
       baseURL:`${process.env.REACT_APP_URL}/auth`,
+      // baseURL:'http://localhost:3010/api/auth',
       // baseURL:'https://travelershare.herokuapp.com/api/auth',
       withCredentials: true
     });
