@@ -1,10 +1,11 @@
-// auth/auth-service.js
-import axios from 'axios';
+import axios from "axios";
 
 class AuthService {
   constructor() {
     this.service = axios.create({
+      // baseURL:'http://localhost:3010/api/auth',
       baseURL:`${process.env.REACT_APP_URL}/auth`,
+      // baseURL:'https://travelershare.herokuapp.com/api/auth',
       withCredentials: true
     });
     console.log(`${process.env.REACT_APP_URL}/auth`)
@@ -15,6 +16,7 @@ class AuthService {
 
   // , lang, country, description, genre,year
   signup = (username, password, lang, country, description, genre,year) => {
+
     return this.service.post('/signup', {username, password, lang, country, description, genre,year})
     .then(response => response.data)
     .catch(err => console.error(err))
@@ -31,12 +33,12 @@ class AuthService {
   }
 
   loggedin = () => {
-    return this.service.get('/currentUser',)
+    return this.service.get('/currentUser')
     .then(response => response.data)
   }
 
   logout = () => {
-    return this.service.get('/logout',)
+    return this.service.get('/logout', {})
     .then(response => response.data)
   }
 }
