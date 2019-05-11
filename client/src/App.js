@@ -3,11 +3,10 @@ import "./App.css";
 
 import { Switch, Route } from "react-router-dom";
 // Components
-import Signup from "./components/authApi/Signup";
-import Profile from "./components/authApi/Profile";
-import Login from "./components/authApi/Login";
 import authService from "./components/authApi/AuthService";
-import Navigator from "./components/Navigator";
+import Home from "./components/Others/Home";
+import Navigator from "./components/Others/Navigator";
+import Signup from "./components/authApi/Signup";
 
 class App extends Component {
   constructor(props) {
@@ -32,35 +31,18 @@ class App extends Component {
 
   render() {
     const { loggedInUser } = this.state;
-
-    if (loggedInUser) {
+    // if (loggedInUser) {
       return (
         <div>
+          
           <Navigator />
-          <p>estas logueado</p>
-          <Switch>
-            <Route user={this.state.loggedInUser} exact path="/profile" component={Profile} />
-            {/* <ProtectedRoutes user={this.state.loggedInUser} exact path='/profile' component={Profile} checkIfLogged={this.fetchUser}/> */}
-          </Switch>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Navigator />
-          <p>no estas logueado</p>
-          <Switch>
-            <Route exact path="/signup" render={() => (
-                <Signup setUser={this.setTheUser} userInSession={this.state.loggedInUser}/>
-              )}/>
-            <Route exact path="/login" render={() => (
-                <Login setUser={this.setTheUser} userInSession={this.state.loggedInUser}/>
-              )}/>
-          </Switch>
+          <Home></Home>
+         
         </div>
       );
     }
-  }
+  // }
 }
+
 
 export default App;

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import AuthService from "./AuthService";
 import { Link, Redirect } from "react-router-dom";
+import AuthService from "../authApi/AuthService";
 
-class Login extends Component {
+
+
+export default class Navigator extends Component {
   constructor(props) {
     super(props);
     this.state = { username: "", password: "", error: "", redirect: false };
@@ -62,12 +64,7 @@ class Login extends Component {
 
           <input type="submit" value="Login" />
         </form>
-        {/* <p>
-          Don't have account?
-          <Link to={"/home"}> Signup</Link>
-        </p> */}
       </div>
     );
   }
 }
-export default Login;

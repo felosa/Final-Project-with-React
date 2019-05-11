@@ -61,7 +61,7 @@ class Signup extends Component {
 
   render(){
     if (this.state.redirect) {
-      return <Redirect to='/login'/>
+      return <Redirect to='/profile'/>
     }
     
     return(
@@ -92,7 +92,7 @@ class Signup extends Component {
         </form>
   
         <p>Already have account? 
-            <Link to={"/login"}> Login</Link>
+            <Link to={"/home"}> Login</Link>
         </p>
   
       </div>

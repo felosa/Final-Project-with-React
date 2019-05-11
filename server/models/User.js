@@ -12,8 +12,8 @@ const userSchema = new Schema({
   rate: Number,
   imgPath: String,
   imgName: String,
-  travels: Array,//referenciar viajes
-  role: {
+  travels: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    role: {
     type: String,
     enum : ['author', 'colaborator', 'normalUser'],
     default : 'normalUser'

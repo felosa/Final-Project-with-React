@@ -2,6 +2,8 @@ const express = require("express");
 const passport = require('passport');
 const router = express.Router();
 const Travel = require("../models/Travel");
+const User = require("../models/User");
+
 
 router.get('/all', (req, res, next) => {
   // encontrar viajes del autor
@@ -19,8 +21,9 @@ router.get('/one/:id', (req, res, next) => {
 });
 
 
-router.post('/new', (req, res) => {
+router.post('/:id/new', (req, res) => {
 //vincular con autor
+const id = req.params.id;
   const {name, country, city, date} = req.body;
   const travel = {
    name, 
@@ -30,6 +33,7 @@ router.post('/new', (req, res) => {
     
   }
   const newTravel = new Travel(travel);
+  User.findByIdAndUpdate(id, {$addToSet: {travels: newUser }}, {new: true})
   newTravel.save()
   .then((travel) => {
     res.json(travel);

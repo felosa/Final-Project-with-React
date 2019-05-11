@@ -57,8 +57,6 @@ router.post('/:id/new', uploadCloud.single("photo"), (req, res) => {
     })
   .catch(err=> res.status(500).json(err))
   
-  
-
 });
 
 router.delete('/delete/:id', (req, res,next) => {
