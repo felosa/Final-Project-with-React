@@ -4,6 +4,7 @@ const router = express.Router();
 const Travel = require("../models/Travel");
 
 router.get('/all', (req, res, next) => {
+  // encontrar viajes del autor
   Travel
     .find()
     .then(allTheTravels => 
@@ -11,15 +12,15 @@ router.get('/all', (req, res, next) => {
 });
 
 router.get('/one/:id', (req, res, next) => {
+  // mostrar un viaje especifico
   Travel
     .findById(req.params.id)
-    .then(Movie => res.json(Travel))
+    .then(Travel => res.json(Travel))
 });
 
 
 router.post('/new', (req, res) => {
-  console.log(req.body, "body")
-
+//vincular con autor
   const {name, country, city, date} = req.body;
   const travel = {
    name, 
@@ -52,7 +53,6 @@ const id = req.params.id
   
   Travel.findByIdAndUpdate(id, req.body)
   .then((travel) =>{
-    console.log(travel)
     res.json(travel);
   })
   .catch((err) =>{

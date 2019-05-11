@@ -17,7 +17,7 @@ class Signup extends Component {
         country: "",
         description:"",
         genre: "",
-        year: 1990,
+        year: "",
         redirect: false,
       },      
     };
@@ -43,7 +43,7 @@ class Signup extends Component {
             country: "",
             description: "",
             genre: "",
-            year: 1990,
+            year: "",
             redirect: true
         });
         // this.props.getUser(response)

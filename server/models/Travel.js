@@ -4,12 +4,14 @@ const Schema   = mongoose.Schema;
 const travelSchema = new Schema({
   name: String,
   city: String,
+  // city: { type: Schema.Types.ObjectId, ref: 'City' },
   country: String,
   description: String,
   date: String,
   imgPath: String,
   imgName: String,
-  plans: Array,
+  author: { type: Schema.Types.ObjectId, ref: 'User' },
+  plans: [{ type: Schema.Types.ObjectId, ref: 'Plan' }]
 }, {
   timestamps: {
     createdAt: 'created_at',

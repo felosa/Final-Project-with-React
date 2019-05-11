@@ -4,13 +4,9 @@ class AuthService {
   constructor() {
     this.service = axios.create({
       baseURL:`${process.env.REACT_APP_URL}/auth`,
-      // baseURL:'http://localhost:3010/api/auth',
-      // baseURL:'https://travelershare.herokuapp.com/api/auth',
       withCredentials: true
     });
-    console.log(`${process.env.REACT_APP_URL}/auth`)
-
-    console.log(this.service)
+   
   }
 
 

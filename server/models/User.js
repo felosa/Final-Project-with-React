@@ -12,7 +12,7 @@ const userSchema = new Schema({
   rate: Number,
   imgPath: String,
   imgName: String,
-  travels: Array,
+  travels: Array,//referenciar viajes
   role: {
     type: String,
     enum : ['author', 'colaborator', 'normalUser'],

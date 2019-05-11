@@ -4,19 +4,20 @@ const Schema   = mongoose.Schema;
 const planSchema = new Schema({
   name: String,
   city: String,
+  // city: { type: Schema.Types.ObjectId, ref: 'City' },
   date: Number,
   type: String,
   description: String,
   lang: String,
   genre: String,
   hour: Number,
-  year: Number,
+  maxYear: Number,
   place: String,
   imgPath: String,
   imgName: String,
-  ownerRate: Number,
+  comments: [String],
   author: { type: Schema.Types.ObjectId, ref: 'User' },
-  colaborate: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+  participants: [{ type: Schema.Types.ObjectId, ref: 'User' }] //ARRAY
 }, {
   timestamps: {
     createdAt: 'created_at',
