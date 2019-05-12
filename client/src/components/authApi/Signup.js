@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import AuthService from "./AuthService";
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import "./Signup.css";
+
 
 
 
@@ -66,28 +68,28 @@ class Signup extends Component {
     
     return(
       <div>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit} className="form">
           <label>Username:</label>
           <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
-          
+          <br></br>
           <label>Password:</label>
           <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
-
+          <br></br>
           <label>Languaje:</label>
           <input type="text" name="lang" value={this.state.lang} onChange={ e => this.handleChange(e)}/>
-
+          <br></br>
           <label>Description:</label>
           <input type="text" name="description" value={this.state.description} onChange={ e => this.handleChange(e)}/>
-          
+          <br></br>
           <label>Country:</label>
           <input type="text" name="country" value={this.state.country} onChange={ e => this.handleChange(e)} />
-         
+          <br></br>
           <label>Genre:</label>
           <input type="text" name="genre" value={this.state.genre} onChange={ e => this.handleChange(e)}/>
-          
+          <br></br>
           <label>Year:</label>
           <input type="number" name="year" value={this.state.year} onChange={ e => this.handleChange(e)} />
-          
+          <br></br>
           <input type="submit" value="Signup" />
         </form>
   

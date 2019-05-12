@@ -9,9 +9,8 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <p>Home</p>
         <Switch>
-          <Route exact path="/home" render={() => (
+          <Route exact path="/" render={() => (
             <GSignup />)}/>
           <Route exact path="/profile" render={() => (
             <GProfile />)}/>

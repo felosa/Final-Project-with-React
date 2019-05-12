@@ -8,20 +8,22 @@ const uploadCloud = require("../config/cloudinary.js");
 
 router.get('/all', (req, res, next) => {
   Plan
-  //filtrar planes por viaje y fechas, (genero y edad del lgueado??) 
+  //filtrar planes por viaje y fechas, (genero y edad del logueado??) 
     .find()
     .then(allThePlan => 
       res.json(allThePlan))
 });
 
-router.get('/selected', (req, res, next) => {
+router.get('/:id/plansoftravel', (req, res, next) => {
   Plan
-  //filtrar planes por viaje y fechas, (genero y edad del lgueado??) 
-    .find({city: req.query.city , date: req.query.date})
+  //Mostrar los planes añadidos a ese viaje
+    .find({city: req.query.city, date: req.query.date})
     .then(allThePlan => 
       res.json(allThePlan))
 });
 
+
+//mostrar un solo plan
 router.get('/one/:id', (req, res, next) => {
   Plan
   // mostrar plan especifico.

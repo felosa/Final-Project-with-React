@@ -7,11 +7,11 @@ import "./GPlan.css";
 export default class GPlan extends Component {
   render() {
     return (
-      <div class="bigbox">
-        <div>
+      <div className="bigbox">
+        <div className="center">
           <OnePlan></OnePlan>
         </div>
-        <div>
+        <div className="center">
           <Chat></Chat>
         </div>
       </div>

@@ -13,21 +13,49 @@ class PlanService {
     console.log(this.service);
   }
 
-  loggedin = () => {
-    return this.service.get("/currentUser").then(response => response.data);
-  };
+  // mostrar planes que se adapten al viaje en /travel
+  getAllPlans = () => {
+    return this.service.get("/all",{})
+    .then(response => response.data)
+    .catch(err => console.error(err))
+  }
 
-  login = (username, password) => {
-    console.log(username, password);
-    return this.service
-      .post("/login", { username, password })
-      .then(response => response.data)
-      .catch(err => console.error(err));
-  };
+  //Mostrar planes añandidos a ese viaje en /travel
+  selectedPlans = () => {
+    return this.service.get("/:id/plansoftravel",{})
+    .then(response => response.data)
+    .catch(err => console.error(err))
+  }
 
-  logout = () => {
-    return this.service.get("/logout", {}).then(response => response.data);
-  };
+//Mostrar un plan en concreto en /plan
+  getOnePlan = () => {
+    return this.service.get("/one/:id",{})
+    .then(response => response.data)
+    .catch(err => console.error(err))
+  }
+
+//crear un nuevo plan en /travel
+  createNewPlan = () => {
+    return this.service.post("/:id/new",{})
+    .then(response => response.data)
+    .catch(err => console.error(err))
+  }
+
+  //borrar plan en /travel
+  deletePlan = () => {
+    return this.service.delete("/delete/:id",{})
+    .then(response => response.data)
+    .catch(err => console.error(err))
+  }
+
+  //editar plan en /travel
+  editPlan = () => {
+    return this.service.put("/edit/:id",{})
+    .then(response => response.data)
+    .catch(err => console.error(err))
+  }
+
+  
 }
 
 export default PlanService;

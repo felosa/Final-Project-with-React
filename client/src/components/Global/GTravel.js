@@ -5,7 +5,7 @@ import Plans from '../planApi/Plans';
 export default class GTravel extends Component {
   render() {
     return (
-      <div>
+      <div className="bigbox">
         <OneTravel></OneTravel>
         <Plans></Plans>
       </div>

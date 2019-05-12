@@ -25,18 +25,17 @@ class App extends Component {
       .catch(x => this.setState({ loggedInUser: false }));
   };
 
-  setTheUser = userObj => {
+  setTheUser = (userObj) => {
     this.setState({ loggedInUser: userObj });
   };
 
   render() {
-    const { loggedInUser } = this.state;
     // if (loggedInUser) {
       return (
         <div>
           
-          <Navigator />
-          <Home></Home>
+          <Navigator    setUser={this.setTheUser}/>
+          <Home         setUser={this.setTheUser}/>
          
         </div>
       );

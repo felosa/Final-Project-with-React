@@ -1,4 +1,7 @@
 .bigbox {
-  display : inline-flex
+display: flex;
+}
 
+.center {
+margin: 50px;
 }

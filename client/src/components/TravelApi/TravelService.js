@@ -13,21 +13,42 @@ class TravelService {
     console.log(this.service);
   }
 
-  loggedin = () => {
-    return this.service.get("/currentUser").then(response => response.data);
-  };
+//Mostrar viajes del usuario en /profile
+  getAllTravels = () => {
+    return this.service.get("/:id/all",{})
+    .then(response => response.data)
+    .catch(err => console.error(err))
+  }
 
-  login = (username, password) => {
-    console.log(username, password);
-    return this.service
-      .post("/login", { username, password })
-      .then(response => response.data)
-      .catch(err => console.error(err));
-  };
+//Mostrar un viaje solo en /travel
+  getOneTravels = () => {
+    return this.service.get("/:id/one",{})
+    .then(response => response.data)
+    .catch(err => console.error(err))
+  }
 
-  logout = () => {
-    return this.service.get("/logout", {}).then(response => response.data);
-  };
+  //crear un viaje nuevo en /profile
+  createNewTravel = () => {
+    return this.service.post("/:id/new",{})
+    .then(response => response.data)
+    .catch(err => console.error(err))
+  }
+
+  //borrar viaje en /profile
+  deleteTravel = () => {
+    return this.service.delete("/delete/:id",{})
+    .then(response => response.data)
+    .catch(err => console.error(err))
+  }
+
+  //editar viaje en /profile, igual no lo implemento
+  editTravel = () => {
+    return this.service.put("/edit/:id",{})
+    .then(response => response.data)
+    .catch(err => console.error(err))
+  }
+
+  
 }
 
 export default TravelService;

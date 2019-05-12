@@ -5,15 +5,15 @@ const Travel = require("../models/Travel");
 const User = require("../models/User");
 
 
-router.get('/all', (req, res, next) => {
-  // encontrar viajes del autor
+router.get('/:id/all', (req, res, next) => {
+  // encontrar viajes del usuario
   Travel
-    .find()
+    .findById(req.params.id)
     .then(allTheTravels => 
       res.json(allTheTravels))
 });
 
-router.get('/one/:id', (req, res, next) => {
+router.get('/:id/one', (req, res, next) => {
   // mostrar un viaje especifico
   Travel
     .findById(req.params.id)

@@ -7,18 +7,20 @@ import AuthService from "../authApi/AuthService";
 export default class Navigator extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "", error: "", redirect: false };
+    this.state = { username: "", password: "", error: "", loggedInUser: null};
     this.service = new AuthService();
   }
 
+  
   handleFormSubmit(event) {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
     this.service.login(username, password).then(user => {
       if (user) {
-        this.setState({ redirect: true, username: "", password: "" }, () =>
-          this.props.setUser(user)
+        console.log(user, "saca usuario")
+        this.setState({ username: "", password: "", loggedInUser:null}, () =>
+        this.props.setUser(user)
         );
       } else {
         this.setState({
@@ -39,8 +41,17 @@ export default class Navigator extends Component {
     // this.state.error = ''
   };
 
+  logoutUser = () =>{
+    this.service.logout()
+    .then(() => {
+      this.setState({ loggedInUser: null });
+      this.props.setUser(null); 
+      console.log("quita usuario") 
+    })
+  }
+
   render() {
-    if (this.state.redirect) {
+    if (this.state.loggedInUser) {
       return <Redirect to="/profile" />;
     }
     return (
@@ -63,6 +74,10 @@ export default class Navigator extends Component {
           />
 
           <input type="submit" value="Login" />
+
+          <Link to='/'>
+                <button onClick={() => this.logoutUser()}>Logout</button>
+          </Link>
         </form>
       </div>
     );

@@ -6,7 +6,7 @@ import Travels from '../TravelApi/Travels';
 export default class GProfile extends Component {
   render() {
     return (
-      <div>
+      <div className="bigbox">
         <Profile></Profile>
         <Travels></Travels>
       </div>
