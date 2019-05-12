@@ -93,10 +93,6 @@ class Signup extends Component {
           <input type="submit" value="Signup" />
         </form>
   
-        <p>Already have account? 
-            <Link to={"/home"}> Login</Link>
-        </p>
-  
       </div>
     )
   }

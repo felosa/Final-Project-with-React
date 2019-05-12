@@ -56,6 +56,17 @@ export default class Navigator extends Component {
     }
     return (
       <div>
+        <div>
+        <Link to='/profile'>
+                <span>Mi perfil</span>
+        </Link>
+        {/* <Link to='/'>
+                <span></span>
+        </Link>
+        <Link to='/'>
+                <span></span>
+        </Link> */}
+        </div>
         <form onSubmit={e => this.handleFormSubmit(e)}>
           <label>Username:</label>
           <input

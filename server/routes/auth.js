@@ -4,6 +4,9 @@ const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const passport = require("passport");
 const uploadCloud = require("../config/cloudinary.js");
+const Travel = require("../models/Travel");
+const Plan = require("../models/Plan");
+
 
 const login = (req, user) => {
   return new Promise((resolve, reject) => {

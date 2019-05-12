@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Switch, Route } from "react-router-dom";
-import GProfile from '../Global/GProfile';
-import GSignup from '../Global/GSignup';
-import GTravel from '../Global/GTravel';
-import GPlan from '../Global/GPlan';
+import GProfile from '../Pages/GProfile';
+import GSignup from '../Pages/GSignup';
+import GTravel from '../Pages/GTravel';
+import GPlan from '../Pages/GPlan';
 
 export default class Home extends Component {
   render() {
