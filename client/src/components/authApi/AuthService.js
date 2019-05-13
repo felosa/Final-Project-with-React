@@ -6,7 +6,6 @@ class AuthService {
       baseURL:`${process.env.REACT_APP_URL}/auth`,
       withCredentials: true
     });
-   
   }
 
 
@@ -22,7 +21,6 @@ class AuthService {
     console.log(username, password)
     return this.service.post('/login', {username, password})
     .then(response => 
-      
       response.data
     )
     .catch(err => console.error(err))

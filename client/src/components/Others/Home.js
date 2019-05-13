@@ -6,18 +6,25 @@ import GTravel from '../Pages/GTravel';
 import GPlan from '../Pages/GPlan';
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+
   render() {
+    console.log(this.props.loggedInUser)
     return (
       <div>
         <Switch>
           <Route exact path="/" render={() => (
             <GSignup />)}/>
           <Route exact path="/profile" render={() => (
-            <GProfile />)}/>
+            <GProfile loggedInUser={this.props.loggedInUser}/>)}/>
+            
           <Route exact path="/travel" render={() => (
-            <GTravel />)}/>
+            <GTravel loggedInUser={this.props.loggedInUser}/>)}/>
           <Route exact path="/plan" render={() => (
-            <GPlan />)}/>
+            <GPlan loggedInUser={this.props.loggedInUser}/>)}/>
         </Switch>
       </div>
     )

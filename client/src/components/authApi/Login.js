@@ -5,7 +5,7 @@ import { Link, Redirect } from "react-router-dom";
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "", error: "", redirect: false };
+    this.state = { username: "", password: "", loggedInUser: null};
     this.service = new AuthService();
   }
 
@@ -13,22 +13,23 @@ class Login extends Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
-    this.service.login(username, password).then(user => {
-      if (user) {
-        this.setState({ redirect: true, username: "", password: "" }, () =>
-          this.props.setUser(user)
-        );
-      } else {
-        this.setState({
-          username: "",
-          password: ""
-        });
-      }
-    });
-    //  .catch(error => {
-    //     console.log(error)
-    //     this.setState({ error: error.response.data.message});
-    // })
+    this.service.login(username, password)
+    .then(response => {
+      // if (user) {
+        console.log(response, "saca usuario")
+        this.setState({ username: username, password: password, loggedInUser: true}, () =>
+        this.props.setUser(response));
+    })
+      // } else {
+    .catch (err =>{
+      this.setState({
+        username: "",
+        password: ""
+      });
+
+    })
+      // }
+    
   }
 
   handleChange = event => {
@@ -38,12 +39,12 @@ class Login extends Component {
   };
 
   render() {
-    if (this.state.redirect) {
-      return <Redirect to="/profile" />;
-    }
+    // if (this.props.loggedInUser) {
+    //   return <Redirect to="/" />;
+    // }
     return (
       <div>
-        <form onSubmit={e => this.handleFormSubmit(e)}>
+          <form onSubmit={e => this.handleFormSubmit(e)}>
           <label>Username:</label>
           <input
             type="text"
@@ -62,10 +63,6 @@ class Login extends Component {
 
           <input type="submit" value="Login" />
         </form>
-        {/* <p>
-          Don't have account?
-          <Link to={"/home"}> Signup</Link>
-        </p> */}
       </div>
     );
   }

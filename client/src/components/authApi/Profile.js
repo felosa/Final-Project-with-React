@@ -12,7 +12,8 @@ class Profile extends Component {
   }
   componentDidMount(){
     
-    this.service.loggedin().then (user=> this.setState({loggedInUser: user}))
+    this.service.loggedin()
+    .then (user=> this.setState({loggedInUser: user}))
 
   }
 
@@ -25,10 +26,15 @@ class Profile extends Component {
             <h2>
               <span>Hello, this is your profile {this.state.loggedInUser.username}</span>
             </h2>
+            <br></br>
             <span>Languajes that I speak: {this.state.loggedInUser.lang}</span>
+            <br></br>
             <span>Country: {this.state.loggedInUser.country}</span>
+            <br></br>
             <span>This is your description: {this.state.loggedInUser.description}</span>
+            <br></br>
             <span>Genre: {this.state.loggedInUser.genre}</span>
+            <br></br>
             <span>Age: {this.state.loggedInUser.year}</span>
 
 

@@ -4,11 +4,17 @@ import Travels from '../TravelApi/Travels';
 
 
 export default class GProfile extends Component {
+  constructor(props) {
+    super(props);
+  }
+  
   render() {
+    console.log(this.props.loggedInUser)
+    // debugger
     return (
       <div className="bigbox">
         <Profile></Profile>
-        <Travels></Travels>
+        <Travels loggedInUser={this.props.loggedInUser}></Travels>
       </div>
     )
   }
