@@ -14,6 +14,10 @@ import GProfile from "./components/Pages/GProfile";
 import GPlan from "./components/Pages/GPlan";
 import GTravel from "./components/Pages/GTravel";
 import GHome from "./components/Pages/GHome";
+import GNewTravel from "./components/Pages/GNewTravel";
+import GNewPlan from "./components/Pages/GNewPlan";
+
+
 
 
 class App extends Component {
@@ -43,7 +47,6 @@ class App extends Component {
 
   render() {
     console.log(this.state.loggedInUser)
-
     if (this.state.loggedInUser) {
       return (
         <div>  
@@ -55,6 +58,12 @@ class App extends Component {
 
             <Route exact path="/profile" render={() => (
               <GProfile loggedInUser={this.state.loggedInUser}/>)}/>
+
+            <Route exact path="/newtravel" render={() => (
+              <GNewTravel loggedInUser={this.state.loggedInUser}/>)}/>
+
+              <Route exact path="/newplan" render={() => (
+              <GNewPlan loggedInUser={this.state.loggedInUser}/>)}/>
               
             <Route exact path="/travel" render={() => (
               <GTravel loggedInUser={this.state.loggedInUser}/>)}/>

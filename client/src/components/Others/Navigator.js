@@ -57,6 +57,7 @@ export default class Navigator extends Component {
       return (
         <div>
         <p>Estas logueado</p>
+        <Link to="/profile"><span>Mi perfil</span></Link>
         <Link to='/'>
                 <button onClick={() => this.logoutUser()}>Logout</button>
         </Link>

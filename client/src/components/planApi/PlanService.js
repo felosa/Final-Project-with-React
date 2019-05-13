@@ -35,8 +35,8 @@ class PlanService {
   }
 
 //crear un nuevo plan en /travel
-  createNewPlan = () => {
-    return this.service.post("/:id/new",{})
+  createNewPlan = (name, city ,date, type, description, lang, genre, hour, maxYear, place, comments) => {
+    return this.service.post("/:id/new",{name, city ,date, type, description, lang, genre, hour, maxYear, place, comments})
     .then(response => response.data)
     .catch(err => console.error(err))
   }

@@ -22,22 +22,27 @@ const uploadCloud = require("../config/cloudinary.js");
 // });
 
 
-router.post('/:id/new', uploadCloud.single("photo"), (req, res) => {
+router.post('/new', uploadCloud.single("photo"), (req, res) => {
 //vincular con autor
-const id = req.params.id;
-var imgPath = req.file.url;
-  var imgName = req.file.originalname;
-  const {name, country, city, date} = req.body;
+console.log(req.user._id, "usuario")
+const id = req.user._id;
+
+// var imgPath = req.file.url;
+//   var imgName = req.file.originalname;
+  const {name, country,description, city, date} = req.body;
   const travel = {
    name, 
    country,
    city,
-   imgPath,
+   description,
+  //  imgPath,
    date,
+   
     
   }
   const newTravel = new Travel(travel);
-  User.findByIdAndUpdate(id, {$addToSet: {travels: newUser }}, {new: true})
+  User.findByIdAndUpdate(id, {$addToSet: {travels: newTravel }}, {new: true})
+  .populate("travels")
   newTravel.save()
   .then((travel) => {
     res.json(travel);

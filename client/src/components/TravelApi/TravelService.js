@@ -28,8 +28,8 @@ class TravelService {
   }
 
   //crear un viaje nuevo en /profile
-  createNewTravel = () => {
-    return this.service.post("/:id/new",{})
+  createNewTravel = (name, city ,country, description, imgPath, author, plans) => {
+    return this.service.post("/new",{name, city ,country, description, imgPath, author, plans})
     .then(response => response.data)
     .catch(err => console.error(err))
   }

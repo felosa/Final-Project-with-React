@@ -54,6 +54,8 @@ router.post('/:id/new', uploadCloud.single("photo"), (req, res) => {
   }
   const newPlan = new Plan(plan);
   Travel.findByIdAndUpdate(id, {$addToSet: {plans: newPlan }}, {new: true})
+  .populate("plans")
+
   .then(travel=> {
     newPlan.save().then(planNew=>res.status(201).json(planNew))
     })
