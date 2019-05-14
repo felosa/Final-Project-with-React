@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TravelService from './TravelService';
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 
 

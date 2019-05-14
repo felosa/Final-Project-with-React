@@ -26,6 +26,16 @@ class AuthService {
     .catch(err => console.error(err))
   }
 
+  editProfile = (lang, country, description, genre,year, id) => {
+    console.log(lang, country, description, genre,year, id)
+    return this.service.post(`/edit/${id}"`, {lang, country, description, genre,year})
+    .then(response => 
+      response.data
+    )
+    .catch(err => console.error(err))
+  }
+
+
   loggedin = () => {
     return this.service.get('/currentUser')
     .then(response => response.data)

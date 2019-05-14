@@ -5,9 +5,9 @@ import Profile from '../authApi/Profile';
 
 
 export default class GNewTravel extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
 
   render() {

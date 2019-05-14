@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import "./App.css";
 
 import { Switch, Route } from "react-router-dom";
-import { Link, Redirect } from "react-router-dom";
 
 // Components
 import authService from "./components/authApi/AuthService";
-import Home from "./components/Others/Home";
 import Navigator from "./components/Others/Navigator";
-import Signup from "./components/authApi/Signup";
 import GSignup from "./components/Pages/GSignup";
 import GProfile from "./components/Pages/GProfile";
 import GPlan from "./components/Pages/GPlan";
@@ -16,6 +13,7 @@ import GTravel from "./components/Pages/GTravel";
 import GHome from "./components/Pages/GHome";
 import GNewTravel from "./components/Pages/GNewTravel";
 import GNewPlan from "./components/Pages/GNewPlan";
+import GEditProfile from "./components/Pages/GEditProfile";
 
 
 
@@ -58,6 +56,10 @@ class App extends Component {
 
             <Route exact path="/profile" render={() => (
               <GProfile loggedInUser={this.state.loggedInUser}/>)}/>
+
+            <Route exact path="/editProfile" render={() => (
+              <GEditProfile loggedInUser={this.state.loggedInUser}/>)}/>    
+
 
             <Route exact path="/newtravel" render={() => (
               <GNewTravel loggedInUser={this.state.loggedInUser}/>)}/>
