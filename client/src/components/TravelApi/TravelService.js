@@ -26,8 +26,9 @@ class TravelService {
   }
 
 //Mostrar un viaje solo en /travel
-  getOneTravels = () => {
-    return this.service.get("/travel/:id/one",{})
+  getOneTravel = (id) => {
+    console.log(id)
+    return this.service.get(`/travel/${id}`)
     .then(response => response.data)
     .catch(err => console.error(err))
   }

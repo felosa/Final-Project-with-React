@@ -31,7 +31,6 @@ class App extends Component {
     this.service
       .loggedin()
       .then(response => {
-        debugger
         console.log(response);
         this.setState({ loggedInUser: response });
       })
@@ -61,14 +60,13 @@ class App extends Component {
             <Route exact path="/editprofile" render={() => (
               <GEditProfile loggedInUser={this.state.loggedInUser}/>)}/>    
 
-
             <Route exact path="/newtravel" render={() => (
               <GNewTravel loggedInUser={this.state.loggedInUser}/>)}/>
 
               <Route exact path="/newplan" render={() => (
               <GNewPlan loggedInUser={this.state.loggedInUser}/>)}/>
               
-            <Route exact path="/travel" render={() => (
+            <Route exact path="/travel/:id" render={() => (
               <GTravel loggedInUser={this.state.loggedInUser}/>)}/>
 
             <Route exact path="/plan" render={() => (

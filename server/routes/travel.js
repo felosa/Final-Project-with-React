@@ -14,12 +14,12 @@ const uploadCloud = require("../config/cloudinary.js");
 //       res.json(allTheTravels))
 // });
 
-// router.get('/:id/one', (req, res, next) => {
-//   // mostrar un viaje especifico
-//   Travel
-//     .findById(req.params.id)
-//     .then(Travel => res.json(Travel))
-// });
+router.get('/:id', (req, res, next) => {
+  // mostrar un viaje especifico
+  Travel
+    .findById(req.params.id)
+    .then(Travel => res.json(Travel))
+});
 
 
 router.post('/new', (req, res) => {

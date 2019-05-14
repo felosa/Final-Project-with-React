@@ -6,7 +6,7 @@ export default class GTravel extends Component {
   render() {
     return (
       <div className="bigbox">
-        <OneTravel></OneTravel>
+        <OneTravel actualtravel={this.props.travel}></OneTravel>
         <Plans></Plans>
       </div>
     )
