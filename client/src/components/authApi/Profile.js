@@ -23,7 +23,7 @@ class Profile extends Component {
     console.log(this.state.loggedInUser)
     return this.state.loggedInUser && (
       <div>
-        <Link to="/editProfile"><button>Edit Profile</button></Link>
+        <Link to="/editprofile"><button>Edit Profile</button></Link>
 
          <div className="">
             <img alt="" url={this.state.loggedInUser.username}/>
@@ -40,6 +40,9 @@ class Profile extends Component {
             <span>Genre: {this.state.loggedInUser.genre}</span>
             <br></br>
             <span>Age: {this.state.loggedInUser.year}</span>
+            <br></br>
+            <img alt="" src={this.state.loggedInUser.imageUrl}></img>
+            
           </div>
           
        

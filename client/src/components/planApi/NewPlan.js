@@ -10,20 +10,19 @@ export default class newPlan extends Component {
     super(props);
 
     this.state = {
-      plan: {
         name: "",
         city: "",
         date: "",
         type:"",
         description: "",
+        imageUrl: "",
         lang: "",
         genre: "",
         hour:"",
         maxYear: "",
         place: "",
         comments: "",
-        redirect: false,
-      },      
+        redirect: false,     
     };
 
     this.service = new PlanService();
@@ -33,12 +32,12 @@ export default class newPlan extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     // , lang, country, description, genre,year
-    const {name, city ,date, type, description, lang, genre, hour, maxYear, place, comments} = this.state.plan
+    const {name, city ,date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl} = this.state
     console.log(name)
 
 
     // , lang, country, description, genre,year
-    this.service.createNewPlan(name, city ,date, type, description, lang, genre, hour, maxYear, place, comments)
+    this.service.createNewPlan(name, city ,date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl)
     .then( () => {
       console.log(name)
         this.setState({
@@ -53,6 +52,7 @@ export default class newPlan extends Component {
           maxYear: "",
           place: "",
           comments: "",
+          imageUrl: "",
           redirect: true,
         });
         // this.props.getUser(response)
@@ -60,11 +60,28 @@ export default class newPlan extends Component {
     .catch( error => console.log(error) )
   }
 
+  handleFileUpload = (e) => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append("imageUrl", e.target.files[0]);
+    this.service.handleUpload(uploadData)
+    .then(response => {
+      // console.log('response is: ', response);
+      // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
+        this.setState({ imageUrl: response.secure_url });
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+}
+
  
   handleChange = event => {
     const { name, value } = event.target;
  
-    this.setState({ user:{ ...this.state.user, [name]: value } });
+    this.setState({ ...this.state.user, [name]: value } );
     
   };
 
@@ -109,6 +126,10 @@ export default class newPlan extends Component {
           <br></br>
           <label>comments:</label>
           <input type="text" name="comments" value={this.state.comments} onChange={ e => this.handleChange(e)} />
+          <br></br>
+          <input 
+            type="file" 
+            onChange={(e) => this.handleFileUpload(e)} />
           <br></br>
           
           <input type="submit" value="Crear plan" />

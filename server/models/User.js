@@ -10,9 +10,9 @@ const userSchema = new Schema({
   genre: String,
   year: Number,
   rate: Number,
-  imgPath: String,
+  imageUrl: String,
   imgName: String,
-  travels: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  travels: [{ type: Schema.Types.ObjectId, ref: 'Travel' }],
     role: {
     type: String,
     enum : ['author', 'colaborator', 'normalUser'],

@@ -8,7 +8,7 @@ const travelSchema = new Schema({
   country: String,
   description: String,
   date: String,
-  imgPath: String,
+  imageUrl: String,
   imgName: String,
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   plans: [{ type: Schema.Types.ObjectId, ref: 'Plan' }]

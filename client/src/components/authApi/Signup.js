@@ -12,7 +12,6 @@ class Signup extends Component {
     super(props);
 
     this.state = {
-      user: {
         username: "",
         password: "",
         lang: "",
@@ -20,8 +19,8 @@ class Signup extends Component {
         description:"",
         genre: "",
         year: "",
-        redirect: false,
-      },      
+        imageUrl: "",
+        redirect: false,      
     };
 
     this.service = new AuthService();
@@ -30,12 +29,13 @@ class Signup extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     // , lang, country, description, genre,year
-    const {username, password,lang, country, description, genre,year} = this.state.user
+    const {username, password, imageUrl, lang, country, description, genre,year} = this.state
     console.log(username, password)
 
+    
 
     // , lang, country, description, genre,year
-    this.service.signup(username, password, lang, country, description, genre,year)
+    this.service.signup(username, password, imageUrl, lang, country, description, genre,year)
     .then( () => {
       console.log(username)
         this.setState({
@@ -45,6 +45,7 @@ class Signup extends Component {
             country: "",
             description: "",
             genre: "",
+            imageUrl:"",
             year: "",
             redirect: true
         });
@@ -53,11 +54,28 @@ class Signup extends Component {
     .catch( error => console.log(error) )
   }
 
+
+  handleFileUpload = (e) => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append("imageUrl", e.target.files[0]);
+    this.service.handleUpload(uploadData)
+    .then(response => {
+      // console.log('response is: ', response);
+      // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
+        this.setState({ imageUrl: response.secure_url });
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+}
  
   handleChange = event => {
     const { name, value } = event.target;
  
-    this.setState({ user:{ ...this.state.user, [name]: value } });
+    this.setState({  ...this.state, [name]: value });
     
   };
 
@@ -89,6 +107,10 @@ class Signup extends Component {
           <br></br>
           <label>Year:</label>
           <input type="number" name="year" value={this.state.year} onChange={ e => this.handleChange(e)} />
+          <br></br>
+          <input 
+            type="file" 
+            onChange={(e) => this.handleFileUpload(e)} />
           <br></br>
           <input type="submit" value="Signup" />
         </form>

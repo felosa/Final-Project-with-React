@@ -30,6 +30,7 @@ router.post("/signup", (req, res, next) => {
     password,
     lang,
     country,
+    imageUrl,
     description,
     genre,
     year
@@ -56,6 +57,7 @@ console.log(username, "username", password, "password")
         password: hashPass,
         lang,
         country,
+        imageUrl,
         description,
         genre,
         year
@@ -104,9 +106,7 @@ router.get("/currentuser", (req, res, next) => {
 
 //EDIT USER
 
-router.post("/edit/:id", uploadCloud.single("photo"), (req, res, next) => {
-  var imgPath = req.file.url;
-  var imgName = req.file.originalname;
+router.post("/edit/:id", (req, res, next) => {
   const {
     lang,
     country,

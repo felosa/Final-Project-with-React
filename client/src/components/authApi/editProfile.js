@@ -25,7 +25,7 @@ class EditProfile extends Component {
 
 
   componentDidMount(){
-    this.service.oneMovie(this.props.match.params._id)
+    this.service.loggedin(this.props.match.params._id)
     .then(user=>{
       console.log(user, "did")
       this.setState({
@@ -43,7 +43,7 @@ class EditProfile extends Component {
       const {lang, country, description, genre,year} = this.state.movie
       const id = this.props.match.params._id
   
-      this.api.editMovie(lang, country, description, genre,year, id)
+      this.api.editProfile(lang, country, description, genre,year, id)
       .then( () => {
         // this.props.getData();
         this.setState({
@@ -69,7 +69,7 @@ class EditProfile extends Component {
 
 
   render(){
-    if (this.state.redirect) {
+    if (this.props.loggedInUser) {
       return <Redirect to='/profile' />
     }
     console.log(this.state.user,"editar")

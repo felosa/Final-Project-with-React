@@ -3,54 +3,59 @@ import axios from "axios";
 class PlanService {
   constructor() {
     this.service = axios.create({
-      baseURL: `${process.env.REACT_APP_URL}/plan`,
+      baseURL: `${process.env.REACT_APP_URL}`,
       // baseURL:'http://localhost:3010/api/plan',
       // baseURL:'https://travelershare.herokuapp.com/api/plan',
       withCredentials: true
     });
-    console.log(`${process.env.REACT_APP_URL}/plan`);
-
-    console.log(this.service);
+    
   }
 
   // mostrar planes que se adapten al viaje en /travel
   getAllPlans = () => {
-    return this.service.get("/all",{})
+    return this.service.get("/plan/all",{})
     .then(response => response.data)
     .catch(err => console.error(err))
   }
 
+  handleUpload = (theFile) => {
+    // console.log('file in service: ', theFile)
+    return this.service.post('/upload', theFile)
+      .then(res => res.data)
+      .catch(err => console.error(err));
+  }
+
   //Mostrar planes añandidos a ese viaje en /travel
   selectedPlans = () => {
-    return this.service.get("/:id/plansoftravel",{})
+    return this.service.get("/plan/:id/plansoftravel",{})
     .then(response => response.data)
     .catch(err => console.error(err))
   }
 
 //Mostrar un plan en concreto en /plan
   getOnePlan = () => {
-    return this.service.get("/one/:id",{})
+    return this.service.get("/plan/one/:id",{})
     .then(response => response.data)
     .catch(err => console.error(err))
   }
 
 //crear un nuevo plan en /travel
-  createNewPlan = (name, city ,date, type, description, lang, genre, hour, maxYear, place, comments) => {
-    return this.service.post("/:id/new",{name, city ,date, type, description, lang, genre, hour, maxYear, place, comments})
+  createNewPlan = (name, city ,date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl) => {
+    return this.service.post("/plan/:id/new",{name, city ,date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl})
     .then(response => response.data)
     .catch(err => console.error(err))
   }
 
   //borrar plan en /travel
   deletePlan = () => {
-    return this.service.delete("/delete/:id",{})
+    return this.service.delete("/plan/delete/:id",{})
     .then(response => response.data)
     .catch(err => console.error(err))
   }
 
   //editar plan en /travel
   editPlan = () => {
-    return this.service.put("/edit/:id",{})
+    return this.service.put("/plan/edit/:id",{})
     .then(response => response.data)
     .catch(err => console.error(err))
   }

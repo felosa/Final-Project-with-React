@@ -32,11 +32,9 @@ router.get('/one/:id', (req, res, next) => {
 });
 
 
-router.post('/:id/new', uploadCloud.single("photo"), (req, res) => {
+router.post('/:id/new', (req, res) => {
   const id = req.params.id;
-  var imgPath = req.file.url;
-  var imgName = req.file.originalname;
-  const {name, city, type, hour, place, maxYear, date, description, lang, genre, rate} = req.body;
+  const {name, city, type, hour, place, maxYear, date, description, lang, genre, rate, imageUrl} = req.body;
   const plan = {
     name,
     city,
@@ -45,15 +43,16 @@ router.post('/:id/new', uploadCloud.single("photo"), (req, res) => {
     place,
     hour,
     maxYear,
-    imgPath,
     date,
     lang,
     genre,
     rate,
+    imageUrl,
     // author //añado autor aqui
   }
   const newPlan = new Plan(plan);
-  Travel.findByIdAndUpdate(id, {$addToSet: {plans: newPlan }}, {new: true})
+  Travel
+  .findByIdAndUpdate(id, {$addToSet: {plans: newPlan }}, {new: true})
   .populate("plans")
 
   .then(travel=> {
@@ -75,10 +74,8 @@ router.delete('/delete/:id', (req, res,next) => {
 });
 
 
-router.put('/edit/:id', uploadCloud.single("photo"), (req,res) => {
+router.put('/edit/:id', (req,res) => {
   const id = req.params.id
-  var imgPath = req.file.url;
-  var imgName = req.file.originalname;
   const {name, city, type, hour, place, maxYear, date, description, lang, genre, rate} = req.body;
   const planEdit = {
     name,
@@ -88,7 +85,6 @@ router.put('/edit/:id', uploadCloud.single("photo"), (req,res) => {
     place,
     hour,
     maxYear,
-    imgPath,
     date,
     lang,
     genre,

@@ -22,32 +22,46 @@ const uploadCloud = require("../config/cloudinary.js");
 // });
 
 
-router.post('/new', uploadCloud.single("photo"), (req, res) => {
+router.post('/new', (req, res) => {
 //vincular con autor
 console.log(req.user._id, "usuario")
 const id = req.user._id;
 
 // var imgPath = req.file.url;
 //   var imgName = req.file.originalname;
-  const {name, country,description, city, date} = req.body;
+  const {name, country,description, city, date, imageUrl} = req.body;
   const travel = {
    name, 
    country,
    city,
    description,
-  //  imgPath,
    date,
-   
-    
+   imageUrl,
   }
   const newTravel = new Travel(travel);
-  User.findByIdAndUpdate(id, {$addToSet: {travels: newTravel }}, {new: true})
-  .populate("travels")
-  newTravel.save()
-  .then((travel) => {
-    res.json(travel);
+  console.log(id, "viaje nuevo")
+
+
+  newTravel.save().then(TravelNew=>{
+    User
+    .findByIdAndUpdate(id, {$addToSet: {travels: TravelNew }}, {new: true})
+    .populate("travels")
+    .then(user=> res.json({user
+      }))
+    .catch(err=> res.status(500).json(err))
+
   })
-});
+  .catch(err=> res.status(500).json(err))
+  })
+  // User
+  // .findByIdAndUpdate(id, {$addToSet: {travels: newTravel }}, {new: true})
+  // .populate("travels")
+ 
+  // .then(user=> {
+  //   newTravel.save().then(TravelNew=>res.status(201).json(TravelNew))
+  //   })
+  // .catch(err=> res.status(500).json(err))
+  // })
 
 router.delete('/delete/:id', (req, res,next) => {
   const id = req.params.id;

@@ -26,7 +26,7 @@ class App extends Component {
     
   }
 
-  componentWillMount(){this.fetchUser()}
+  componentDidMount(){this.fetchUser()}
   fetchUser = () => {
     this.service
       .loggedin()
@@ -57,7 +57,7 @@ class App extends Component {
             <Route exact path="/profile" render={() => (
               <GProfile loggedInUser={this.state.loggedInUser}/>)}/>
 
-            <Route exact path="/editProfile" render={() => (
+            <Route exact path="/editprofile" render={() => (
               <GEditProfile loggedInUser={this.state.loggedInUser}/>)}/>    
 
 

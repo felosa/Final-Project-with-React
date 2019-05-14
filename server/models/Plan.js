@@ -13,7 +13,7 @@ const planSchema = new Schema({
   hour: Number,
   maxYear: Number,
   place: String,
-  imgPath: String,
+  imageUrl: String,
   imgName: String,
   comments: [String],
   author: { type: Schema.Types.ObjectId, ref: 'User' },
