@@ -10,9 +10,10 @@ export default class GNewTravel extends Component {
 
 
   render() {
+    console.log(this.props.match.params)
     return (
       <div className="bigbox">
-        <OneTravel loggedInUser={this.props.loggedInUser}></OneTravel>
+        <OneTravel travel={this.props.match.params}></OneTravel>
         <NewPlan></NewPlan>
       </div>
     )

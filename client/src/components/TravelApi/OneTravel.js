@@ -1,41 +1,47 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import TravelService from './TravelService';
-
-
+import TravelService from "./TravelService";
 
 export default class OneTravel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     
-        travel: null,
-        redirect: false,
+      travel: null,
+      redirect: false
     };
     this.service = new TravelService();
   }
 
-
-  componentDidMount(){
-    console.log(this.props.match.params._id)
-    this.api.getOneTravel(this.props.match.params.id)
-    .then(travel=>{
-      console.log(travel)
+  componentDidMount() {
+    const id = this.props.travel.id;
+    console.log(this.props.travel.id);
+    this.service.getOneTravel(id).then(travel => {
+      console.log(travel.name);
       this.setState({
         ...this.state,
         travel: travel
-        
-      })
-    })
+      });
+    });
   }
 
   render() {
+    console.log(this.state.travel)
     return (
       <div>
-        <p>Viaje actual donde se muestran los planes de ese viaje, buscando y anadiendo planes</p>
-        <p>{this.state.travel}</p>
-        <Link to="/newplan"><button>New Plan</button></Link>
+        <p>
+          Viaje actual donde se muestran los planes de ese viaje, buscando y
+          anadiendo planes
+        </p>
+        {this.state.travel ? 
+        <div>
+          <p>{this.state.travel.name}</p>
+          <p>{this.state.travel.description}</p>
+        </div> : ""}
+
+        <Link travel={this.props.travel.id} to={`/newplan/${this.props.travel.id}`}>
+          <button>New Plan</button>
+        </Link>
       </div>
-    )
+    );
   }
 }

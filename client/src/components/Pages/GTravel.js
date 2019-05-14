@@ -4,9 +4,10 @@ import Plans from '../planApi/Plans';
 
 export default class GTravel extends Component {
   render() {
+    console.log(this.props.travel)
     return (
       <div className="bigbox">
-        <OneTravel actualtravel={this.props.travel}></OneTravel>
+        <OneTravel travel={this.props.match.params}></OneTravel>
         <Plans></Plans>
       </div>
     )

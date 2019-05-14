@@ -63,11 +63,11 @@ class App extends Component {
             <Route exact path="/newtravel" render={() => (
               <GNewTravel loggedInUser={this.state.loggedInUser}/>)}/>
 
-              <Route exact path="/newplan" render={() => (
-              <GNewPlan loggedInUser={this.state.loggedInUser}/>)}/>
+              <Route exact path="/newplan/:id" render={(matchProps) => (
+              <GNewPlan {...matchProps} {...this.props} loggedInUser={this.state.loggedInUser}/>)}/>
               
-            <Route exact path="/travel/:id" render={() => (
-              <GTravel loggedInUser={this.state.loggedInUser}/>)}/>
+            <Route exact path="/travel/:id" render={(matchProps) => (
+              <GTravel {...matchProps} {...this.props} loggedInUser={this.state.loggedInUser}/>)}/>
 
             <Route exact path="/plan" render={() => (
               <GPlan loggedInUser={this.state.loggedInUser}/>)}/>
