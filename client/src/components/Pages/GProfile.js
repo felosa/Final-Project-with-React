@@ -9,7 +9,7 @@ export default class GProfile extends Component {
   }
   
   render() {
-    console.log(typeof this.props.loggedInUser.travels)
+    console.log(this.props.loggedInUser.travels)
     // debugger
     return (
       <div className="bigbox">

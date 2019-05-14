@@ -33,7 +33,7 @@ export default class newTravel extends Component {
     // , lang, country, description, genre,year
     this.service.createNewTravel(name, city ,country, description, imageUrl, author, plans)
     .then( (result) => {
-      console.log(result)
+      debugger
         this.setState({
           name: "",
           city: "",

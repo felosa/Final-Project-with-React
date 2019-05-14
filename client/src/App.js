@@ -31,6 +31,7 @@ class App extends Component {
     this.service
       .loggedin()
       .then(response => {
+        debugger
         console.log(response);
         this.setState({ loggedInUser: response });
       })

@@ -46,8 +46,10 @@ const id = req.user._id;
     User
     .findByIdAndUpdate(id, {$addToSet: {travels: TravelNew }}, {new: true})
     .populate("travels")
-    .then(user=> res.json({user
-      }))
+    .then(user=>{ res.json({user
+      })
+      console.log(user, "usuarionew")
+    })
     .catch(err=> res.status(500).json(err))
 
   })

@@ -98,7 +98,13 @@ router.post("/login", (req, res, next) => {
 router.get("/currentuser", (req, res, next) => {
   console.log("hey")
   if (req.user) {
-    res.status(200).json(req.user);
+
+    User.findById(req.user._id)
+    .populate("travels")
+    .then((populatedUser) => {
+      res.status(200).json(populatedUser);
+    })
+    
   } else {
     next(new Error("Not logged in"));
   }

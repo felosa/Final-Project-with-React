@@ -65,6 +65,8 @@ export default class Travels extends Component {
 
 
   render() {
+    debugger
+    console.log(this.props.loggedInUser.travels)
     return this.props.loggedInUser && (
       <div>
         <p>Lista de travels</p>
