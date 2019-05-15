@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import OnePlan from '../planApi/OnePlan';
-import Chat from '../planApi/Chat';
+import Chat from '../CommentApi/Chat';
 import "./GPlan.css";
 
 

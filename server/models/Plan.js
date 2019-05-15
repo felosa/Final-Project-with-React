@@ -15,7 +15,7 @@ const planSchema = new Schema({
   place: String,
   imageUrl: String,
   imgName: String,
-  comments: [String],
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   participants: [{ type: Schema.Types.ObjectId, ref: 'User' }] //ARRAY
 }, {

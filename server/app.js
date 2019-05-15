@@ -73,8 +73,12 @@ app.use('/api/auth', authRouter);
 const travelRouter = require('./routes/travel');
 app.use('/api/travel', travelRouter);
 
+
 const planRouter = require('./routes/plan');
 app.use('/api/plan', planRouter);
+
+// const commentRouter = require('./routes/comment');
+// app.use('/api/comment', commentRouter);
 
 app.use('/api', require('./routes/file-upload-routes'));
 
