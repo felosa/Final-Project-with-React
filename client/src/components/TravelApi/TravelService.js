@@ -34,8 +34,8 @@ class TravelService {
   }
 
   //crear un viaje nuevo en /profile
-  createNewTravel = (name, city ,country, description, imageUrl, author, plans) => {
-    return this.service.post("/travel/new",{name, city ,country, description, imageUrl, author, plans})
+  createNewTravel = (name, city ,country, description, imageUrl, author, plans, minDate, maxDate) => {
+    return this.service.post("/travel/new",{name, city ,country, description, imageUrl, author, plans, minDate, maxDate})
     .then(response => {
       return response.data
     })

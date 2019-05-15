@@ -69,8 +69,8 @@ class App extends Component {
             <Route exact path="/travel/:id" render={(matchProps) => (
               <GTravel {...matchProps} {...this.props} loggedInUser={this.state.loggedInUser}/>)}/>
 
-            <Route exact path="/plan" render={() => (
-              <GPlan loggedInUser={this.state.loggedInUser}/>)}/>
+            <Route exact path="/plan/:id" render={(matchProps) => (
+              <GPlan {...matchProps} {...this.props} loggedInUser={this.state.loggedInUser}/>)}/>
         </Switch>
          
         </div>

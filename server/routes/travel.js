@@ -30,7 +30,7 @@ const id = req.user._id;
 
 // var imgPath = req.file.url;
 //   var imgName = req.file.originalname;
-  const {name, country,description, city, date, imageUrl} = req.body;
+  const {name, country,description, city, date, imageUrl, minDate, maxDate} = req.body;
   const travel = {
    name, 
    country,
@@ -38,6 +38,8 @@ const id = req.user._id;
    description,
    date,
    imageUrl,
+   minDate,
+   maxDate,
   }
   const newTravel = new Travel(travel);
   console.log(id, "viaje nuevo")

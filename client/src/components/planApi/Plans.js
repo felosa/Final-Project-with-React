@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import PlanService from './PlanService';
+import { Link } from "react-router-dom";
+
 
 
 export default class Plans extends Component {
@@ -39,7 +41,7 @@ export default class Plans extends Component {
             </div>
             <div>
               <p>
-                {plan.name}
+              <Link actualplan={plan} to={`/plan/${plan._id}`}><p>{plan.name}</p></Link>
               </p>
             {/* <Link className="" to={`/${plan._id}`}>{plan.name}</Link> */}
             </div>

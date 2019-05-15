@@ -33,8 +33,8 @@ class PlanService {
   }
 
 //Mostrar un plan en concreto en /plan
-  getOnePlan = () => {
-    return this.service.get("/plan/one/:id",{})
+  getOnePlan = (id) => {
+    return this.service.get(`/plan/one/${id}`,{})
     .then(response => response.data)
     .catch(err => console.error(err))
   }

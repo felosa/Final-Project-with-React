@@ -5,7 +5,7 @@ const planSchema = new Schema({
   name: String,
   city: String,
   // city: { type: Schema.Types.ObjectId, ref: 'City' },
-  date: Number,
+  date: String,
   type: String,
   description: String,
   lang: String,

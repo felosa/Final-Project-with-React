@@ -35,19 +35,19 @@ router.get('/one/:id', (req, res, next) => {
 router.post('/:id/new', (req, res) => {
   const id = req.params.id;
   console.log(id)
-  const {name, city, type, hour, place, maxYear, date, description, lang, genre, rate, imageUrl} = req.body;
+  const {name, city ,date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl} = req.body;
   const plan = {
     name,
     city,
+    date,
     type,
     description,
-    place,
-    hour,
-    maxYear,
-    date,
     lang,
     genre,
-    rate,
+    hour,
+    maxYear,
+    place,
+    comments,
     imageUrl,
     // author //añado autor aqui
   }

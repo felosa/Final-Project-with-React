@@ -100,9 +100,6 @@ export default class newPlan extends Component {
           <label>City:</label>
           <input type="text" name="city" value={this.state.city} onChange={ e => this.handleChange(e)} />
           <br></br>
-          <label>Date:</label>
-          <input type="text" name="date" value={this.state.date} onChange={ e => this.handleChange(e)}/>
-          <br></br>
           <label>Type:</label>
           <input type="text" name="type" value={this.state.type} onChange={ e => this.handleChange(e)}/>
           <br></br>
@@ -126,6 +123,10 @@ export default class newPlan extends Component {
           <br></br>
           <label>comments:</label>
           <input type="text" name="comments" value={this.state.comments} onChange={ e => this.handleChange(e)} />
+          <br></br>
+          <br></br>
+          <label>Date:</label>
+          <input type="date" name="date" value={this.state.date} onChange={ e => this.handleChange(e)} />
           <br></br>
           <input 
             type="file" 

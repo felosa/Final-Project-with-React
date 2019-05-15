@@ -41,7 +41,7 @@ export default class OneTravel extends Component {
               {this.state.travel.plans.map(plan => {
                 return (
                   <div>
-                    <p>{plan.name}</p>
+                    <Link actualplan={plan} to={`/plan/${plan._id}`}><p>{plan.name}</p></Link>
                     {/* <Link actualtravel={travel} to={`/travel/${travel._id}`}>
                       <p>{travel.name}</p>
                     </Link> */}

@@ -16,6 +16,8 @@ export default class newTravel extends Component {
         imageUrl: "",
         author: "",
         plans: "",
+        minDate: "",
+        maxDate: "",
         redirect: false,    
     };
 
@@ -26,12 +28,12 @@ export default class newTravel extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     // , lang, country, description, genre,year
-    const {name, city ,country, description, imageUrl, author, plans} = this.state
+    const {name, city ,country, description, imageUrl, author, plans, minDate, maxDate} = this.state
     console.log(name)
 
 
     // , lang, country, description, genre,year
-    this.service.createNewTravel(name, city ,country, description, imageUrl, author, plans)
+    this.service.createNewTravel(name, city ,country, description, imageUrl, author, plans, minDate, maxDate)
     .then( (result) => {
         this.setState({
           name: "",
@@ -41,6 +43,8 @@ export default class newTravel extends Component {
           imageUrl: "",
           author: "",
           plans: "",
+          minDate: "",
+          maxDate: "",
           redirect: true,
         });
         // this.props.getUser(response)
@@ -97,6 +101,14 @@ export default class newTravel extends Component {
           <input type="text" name="description" value={this.state.description} onChange={ e => this.handleChange(e)}/>
           <br></br>
           <br></br>
+          <label>Arrive Date:</label>
+          <input type="date" name="minDate" value={this.state.minDate} onChange={ e => this.handleChange(e)}/>
+          <br></br>          
+          <br></br>
+          <label> Date:</label>
+          <input type="date" name="maxDate" value={this.state.maxDate} onChange={ e => this.handleChange(e)}/>
+          <br></br>
+          
           <input 
             type="file" 
             onChange={(e) => this.handleFileUpload(e)} />
