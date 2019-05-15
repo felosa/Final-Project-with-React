@@ -13,7 +13,7 @@ export default class GPlan extends Component {
           <OnePlan loggedInUser={this.props.loggedInUser} plan={this.props.match.params}></OnePlan>
         </div>
         <div className="center">
-          <Chat></Chat>
+          <Chat loggedInUser={this.props.loggedInUser} plan={this.props.match.params}></Chat>
         </div>
       </div>
     )

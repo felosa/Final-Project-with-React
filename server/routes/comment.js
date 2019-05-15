@@ -9,6 +9,7 @@ const Comment = require("../models/Comment");
 
 router.post('/:id/new', (req, res) => {
   const id = req.params.id;
+  console.log(id,req.body.message)
   const {message} = req.body;
   const comment = {
     author: req.user,
@@ -21,9 +22,12 @@ router.post('/:id/new', (req, res) => {
   .populate("comments")
 
   .then(comment=> {
-    newPlan.save().then(planNew=>res.status(201).json(planNew))
+    newComment.save().then(commentNew=>res.status(201).json(commentNew))
     })
   .catch(err=> res.status(500).json(err))
   
 });
+
+
+module.exports = router;
 

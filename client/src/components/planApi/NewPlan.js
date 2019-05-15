@@ -21,7 +21,6 @@ export default class newPlan extends Component {
         hour:"",
         maxYear: "",
         place: "",
-        comments: "",
         redirect: false,     
     };
 
@@ -32,12 +31,12 @@ export default class newPlan extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     // , lang, country, description, genre,year
-    const {name, city ,date_date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl} = this.state
+    const {name, city ,date_date, type, description, lang, genre, hour, maxYear, place, imageUrl} = this.state
     console.log(name)
     const id = this.props.travel.id;
 
     // , lang, country, description, genre,year
-    this.service.createNewPlan(name, city ,date_date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl,id)
+    this.service.createNewPlan(name, city ,date_date, type, description, lang, genre, hour, maxYear, place, imageUrl,id)
     .then( () => {
       console.log(name)
         this.setState({
@@ -51,7 +50,6 @@ export default class newPlan extends Component {
           hour:"",
           maxYear: "",
           place: "",
-          comments: "",
           imageUrl: "",
           redirect: true,
         });
@@ -130,10 +128,6 @@ export default class newPlan extends Component {
           <br></br>
           <label>Place:</label>
           <input type="text" name="place" value={this.state.place} onChange={ e => this.handleChange(e)}/>
-          <br></br>
-          <label>comments:</label>
-          <input type="text" name="comments" value={this.state.comments} onChange={ e => this.handleChange(e)} />
-          <br></br>
           <br></br>
           <label>Date:</label>
           <input type="date" name="date" value={this.state.date} onChange={ e => this.handleChangeAsDate(e)} />
