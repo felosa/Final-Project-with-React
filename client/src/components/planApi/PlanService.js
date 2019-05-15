@@ -18,6 +18,12 @@ class PlanService {
     .catch(err => console.error(err))
   }
 
+  getAllPlansWithInDates = (minDate,maxDate) => {
+    return this.service.get(`/plan/filtered/${minDate}/${maxDate}`,{})
+    .then(response => response.data)
+    .catch(err => console.error(err))
+  }
+
   handleUpload = (theFile) => {
     // console.log('file in service: ', theFile)
     return this.service.post('/upload', theFile)

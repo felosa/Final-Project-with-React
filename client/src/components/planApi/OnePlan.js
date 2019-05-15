@@ -39,7 +39,8 @@ export default class OnePlan extends Component {
 
 
   render() {
-    console.log(this.props.loggedInUser.travels);
+    if(this.props.loggedInUser.travels) 
+    console.log(this.props.loggedInUser.travels[0]);
     return (
       <div>
         <p>
@@ -69,13 +70,18 @@ export default class OnePlan extends Component {
         )}
         
         <p>Mis viajes actuales</p>
-        {/* {this.props.loggedInUser.travels.map(travel => {
+        {this.props.loggedInUser.travels?
+        this.props.loggedInUser.travels.map(travel => {
                 return (
                   <div>
                     <p>{travel.name}</p>
                   </div>
                 );
-              })} */}
+              })
+              :
+              null
+
+            }
         <Link
           to={`/profile`}
         >
