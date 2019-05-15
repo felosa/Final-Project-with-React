@@ -14,7 +14,7 @@ export default class GNewTravel extends Component {
     return (
       <div className="bigbox">
         <OneTravel travel={this.props.match.params}></OneTravel>
-        <NewPlan></NewPlan>
+        <NewPlan travel={this.props.match.params}></NewPlan>
       </div>
     )
   }

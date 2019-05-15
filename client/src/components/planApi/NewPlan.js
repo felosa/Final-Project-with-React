@@ -34,10 +34,10 @@ export default class newPlan extends Component {
     // , lang, country, description, genre,year
     const {name, city ,date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl} = this.state
     console.log(name)
-
+    const id = this.props.travel.id;
 
     // , lang, country, description, genre,year
-    this.service.createNewPlan(name, city ,date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl)
+    this.service.createNewPlan(name, city ,date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl,id)
     .then( () => {
       console.log(name)
         this.setState({
@@ -94,7 +94,7 @@ export default class newPlan extends Component {
     return (
         <div>
         <form onSubmit={this.handleFormSubmit} className="form">
-          <label>Travel Name:</label>
+          <label>Plan Name:</label>
           <input type="text" name="name" value={this.state.name} onChange={ e => this.handleChange(e)}/>
           <br></br>
           <label>City:</label>

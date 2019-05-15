@@ -18,6 +18,7 @@ router.get('/:id', (req, res, next) => {
   // mostrar un viaje especifico
   Travel
     .findById(req.params.id)
+    .populate("plans")
     .then(Travel => res.json(Travel))
 });
 

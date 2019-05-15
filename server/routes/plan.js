@@ -34,6 +34,7 @@ router.get('/one/:id', (req, res, next) => {
 
 router.post('/:id/new', (req, res) => {
   const id = req.params.id;
+  console.log(id)
   const {name, city, type, hour, place, maxYear, date, description, lang, genre, rate, imageUrl} = req.body;
   const plan = {
     name,

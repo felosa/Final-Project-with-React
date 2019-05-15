@@ -23,10 +23,7 @@ class Profile extends Component {
     console.log(this.state.loggedInUser)
     return this.state.loggedInUser && (
       <div>
-        <Link to="/editprofile"><button>Edit Profile</button></Link>
-
          <div className="">
-            <img alt="" url={this.state.loggedInUser.username}/>
             <h2>
               <span>Hello, this is your profile {this.state.loggedInUser.username}</span>
             </h2>

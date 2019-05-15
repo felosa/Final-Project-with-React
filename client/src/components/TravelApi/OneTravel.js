@@ -25,20 +25,39 @@ export default class OneTravel extends Component {
   }
 
   render() {
-    console.log(this.state.travel)
+    console.log(this.state.travel);
     return (
       <div>
         <p>
           Viaje actual donde se muestran los planes de ese viaje, buscando y
           anadiendo planes
         </p>
-        {this.state.travel ? 
-        <div>
-          <p>{this.state.travel.name}</p>
-          <p>{this.state.travel.description}</p>
-        </div> : ""}
+        {this.state.travel ? (
+          <div>
+            <h2>{this.state.travel.name}</h2>
+            <h3>{this.state.travel.description}</h3>
+            <h3>Planes en los que estas apuntado en este viaje:</h3>
+            <div>
+              {this.state.travel.plans.map(plan => {
+                return (
+                  <div>
+                    <p>{plan.name}</p>
+                    {/* <Link actualtravel={travel} to={`/travel/${travel._id}`}>
+                      <p>{travel.name}</p>
+                    </Link> */}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
 
-        <Link travel={this.props.travel.id} to={`/newplan/${this.props.travel.id}`}>
+        <Link
+          travel={this.props.travel.id}
+          to={`/newplan/${this.props.travel.id}`}
+        >
           <button>New Plan</button>
         </Link>
       </div>

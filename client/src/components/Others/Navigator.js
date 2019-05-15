@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import AuthService from "../authApi/AuthService";
 import Login from "../authApi/Login";
+import "./Navigator.css";
+
 
 
 
@@ -56,7 +58,10 @@ export default class Navigator extends Component {
     if (this.props.loggedInUser) {
       return (
         <div>
-        <p>Estas logueado</p>
+        <p>Hola {this.props.loggedInUser.username}</p>
+        <div className="imgProf">
+          <img alt="" src={this.props.loggedInUser.imageUrl}></img>
+        </div>
         <Link to="/profile"><span>Mi perfil</span></Link>
         <Link to='/'>
                 <button onClick={() => this.logoutUser()}>Logout</button>
