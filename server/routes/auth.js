@@ -23,7 +23,6 @@ const login = (req, user) => {
 
 // SIGNUP
 router.post("/signup", (req, res, next) => {
-  console.log(req.body)
 
   const {
     username,
@@ -36,7 +35,6 @@ router.post("/signup", (req, res, next) => {
     year
   } = req.body;
 
-console.log(username, "username", password, "password")
   // Check for non empty user or password
   if (!username || !password) {
     res.status(404).json()
@@ -96,7 +94,6 @@ router.post("/login", (req, res, next) => {
 });
 
 router.get("/currentuser", (req, res, next) => {
-  console.log("hey")
   if (req.user) {
 
     User.findById(req.user._id)
@@ -112,7 +109,7 @@ router.get("/currentuser", (req, res, next) => {
 
 //EDIT USER
 
-router.post("/edit/:id", (req, res, next) => {
+router.put("/edit/:id", (req, res, next) => {
   const {
     lang,
     country,

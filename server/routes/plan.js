@@ -14,6 +14,17 @@ router.get('/all', (req, res, next) => {
       res.json(allThePlan))
 });
 
+
+router.get('/plans/filtered', (req, res, next) => {
+  Plan
+  //filtrar planes por viaje y fechas, (genero y edad del logueado??) 
+    .find({minDate: {$gte: ISODate("2019-05-15T00:00:00.000+00:00"), $lte: ISODate("2019-05-18T00:00:00.000+00:00")}})
+    .then(allThePlan => 
+      res.json(allThePlan))
+});
+
+
+
 router.get('/:id/plansoftravel', (req, res, next) => {
   Plan
   //Mostrar los planes añadidos a ese viaje
@@ -28,13 +39,13 @@ router.get('/one/:id', (req, res, next) => {
   Plan
   // mostrar plan especifico.
     .findById(req.params.id)
+    .populate("participants")
     .then(Plan => res.json(Plan))
 });
 
 
 router.post('/:id/new', (req, res) => {
   const id = req.params.id;
-  console.log(id)
   const {name, city ,date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl} = req.body;
   const plan = {
     name,
@@ -49,6 +60,7 @@ router.post('/:id/new', (req, res) => {
     place,
     comments,
     imageUrl,
+    author: req.user
     // author //añado autor aqui
   }
   const newPlan = new Plan(plan);
@@ -75,26 +87,13 @@ router.delete('/delete/:id', (req, res,next) => {
 });
 
 
-router.put('/edit/:id', (req,res) => {
-  const id = req.params.id
-  const {name, city, type, hour, place, maxYear, date, description, lang, genre, rate} = req.body;
-  const planEdit = {
-    name,
-    city,
-    type,
-    description,
-    place,
-    hour,
-    maxYear,
-    date,
-    lang,
-    genre,
-    rate,
-  }
-  
-  Plan.findByIdAndUpdate(
-    id,
-    req.body)
+router.put('/:id/edit', (req,res) => {
+  const idw = req.params.id
+  console.log(idw, "meter en el plan al usuario")
+  const {participants} = req.body;
+  const newParticipant = req.user
+  Plan.findByIdAndUpdate(req.params.id, {$addToSet: {participants: newParticipant }}, {new: true})
+  .populate("participants")
   .then((data) =>{
     res.json(data);
   })

@@ -32,18 +32,18 @@ export default class newPlan extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     // , lang, country, description, genre,year
-    const {name, city ,date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl} = this.state
+    const {name, city ,date_date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl} = this.state
     console.log(name)
     const id = this.props.travel.id;
 
     // , lang, country, description, genre,year
-    this.service.createNewPlan(name, city ,date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl,id)
+    this.service.createNewPlan(name, city ,date_date, type, description, lang, genre, hour, maxYear, place, comments, imageUrl,id)
     .then( () => {
       console.log(name)
         this.setState({
           name: "",
           city: "",
-          date: "",
+          date_date: "",
           type:"",
           description: "",
           lang: "",
@@ -59,6 +59,16 @@ export default class newPlan extends Component {
     })
     .catch( error => console.log(error) )
   }
+
+  handleChangeAsDate = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+      ...this.state,
+      [name]: value,
+      [name + "_date"]: new Date(value)
+    });
+  };
 
   handleFileUpload = (e) => {
     console.log("The file to be uploaded is: ", e.target.files[0]);
@@ -126,7 +136,7 @@ export default class newPlan extends Component {
           <br></br>
           <br></br>
           <label>Date:</label>
-          <input type="date" name="date" value={this.state.date} onChange={ e => this.handleChange(e)} />
+          <input type="date" name="date" value={this.state.date} onChange={ e => this.handleChangeAsDate(e)} />
           <br></br>
           <input 
             type="file" 

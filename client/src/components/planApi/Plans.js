@@ -8,6 +8,8 @@ export default class Plans extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      minDate: "",
+      maxDate: "",
      plans: null
     }
     this.service = new PlanService()
@@ -26,6 +28,16 @@ export default class Plans extends Component {
   }
 
 
+  handleChangeAsDate = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+      ...this.state,
+      [name]: value,
+      [name + "_date"]: new Date(value)
+    });
+  };
+
 
 
   render() {
@@ -33,6 +45,20 @@ export default class Plans extends Component {
     return (this.state.plans && 
       <div>
         <h2>Lista de planes</h2>
+
+        <form onSubmit={this.handleFormSubmit} className="form">
+          <label>Arrive Date:</label>
+          <input type="date" name="minDate" value={this.state.minDate} onChange={ e => this.handleChangeAsDate(e)} />
+          <label>Leave Date:</label>
+          <input type="date" name="maxDate" value={this.state.maxDate} onChange={ e => this.handleChangeAsDate(e)} />
+         <br></br>
+         <br></br>
+
+          <input type="submit" value="Search" />
+        </form>
+  
+        
+
         {this.state.plans.map((plan,idx) => {
           return (
             <div key={idx} className="boxMovie">

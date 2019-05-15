@@ -10,7 +10,7 @@ export default class GPlan extends Component {
     return (
       <div className="bigbox">
         <div className="center">
-          <OnePlan plan={this.props.match.params}></OnePlan>
+          <OnePlan loggedInUser={this.props.loggedInUser} plan={this.props.match.params}></OnePlan>
         </div>
         <div className="center">
           <Chat></Chat>

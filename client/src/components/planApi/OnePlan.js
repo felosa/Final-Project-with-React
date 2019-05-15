@@ -25,8 +25,21 @@ export default class OnePlan extends Component {
     });
   }
 
+  addPlan = () => {
+  const id = this.props.plan.id;
+  console.log(id)
+  this.service.editPlan(this.props.plan.id)
+  .then(plan => {
+    this.setState({
+      ...this.state,
+      plan: plan
+    });
+  });
+}
+
+
   render() {
-    console.log(this.state.plan);
+    console.log(this.props.loggedInUser.travels);
     return (
       <div>
         <p>
@@ -54,11 +67,19 @@ export default class OnePlan extends Component {
         ) : (
           ""
         )}
-
+        
+        <p>Mis viajes actuales</p>
+        {/* {this.props.loggedInUser.travels.map(travel => {
+                return (
+                  <div>
+                    <p>{travel.name}</p>
+                  </div>
+                );
+              })} */}
         <Link
           to={`/profile`}
         >
-          <button>Apuntate a este viaje</button>
+        <button onClick={() => this.addPlan()}>Apuntate a este viaje</button>
         </Link>
       </div>
     );

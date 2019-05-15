@@ -25,7 +25,6 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/new', (req, res) => {
 //vincular con autor
-console.log(req.user._id, "usuario")
 const id = req.user._id;
 
 // var imgPath = req.file.url;
@@ -42,8 +41,6 @@ const id = req.user._id;
    maxDate,
   }
   const newTravel = new Travel(travel);
-  console.log(id, "viaje nuevo")
-
 
   newTravel.save().then(TravelNew=>{
     User
@@ -51,7 +48,6 @@ const id = req.user._id;
     .populate("travels")
     .then(user=>{ res.json({user
       })
-      console.log(user, "usuarionew")
     })
     .catch(err=> res.status(500).json(err))
 

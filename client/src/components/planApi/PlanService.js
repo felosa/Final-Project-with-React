@@ -54,8 +54,9 @@ class PlanService {
   }
 
   //editar plan en /travel
-  editPlan = () => {
-    return this.service.put("/plan/edit/:id",{})
+  editPlan = (id) => {
+    console.log(id)
+    return this.service.put(`/plan/${id}/edit`,{id})
     .then(response => response.data)
     .catch(err => console.error(err))
   }
