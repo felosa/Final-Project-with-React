@@ -15,12 +15,12 @@ router.get('/all', (req, res, next) => {
 });
 
 
-router.get('/plans/filtered', (req, res, next) => {
+router.get('/plans/filtered/:minDate/:maxDate', (req, res, next) => {
   Plan
   //filtrar planes por viaje y fechas, (genero y edad del logueado??) 
-    .find({minDate: {$gte: ISODate("2019-05-15T00:00:00.000+00:00"), $lte: ISODate("2019-05-18T00:00:00.000+00:00")}})
-    .then(allThePlan => 
-      res.json(allThePlan))
+    .find({date: {$gte: ISODate(req.params.minDate), $lte: ISODate(req.params.maxDate)}})
+    .then(allThePlanWithInDates => 
+      res.json(allThePlanWithInDates))
 });
 
 
