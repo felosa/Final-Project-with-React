@@ -9,21 +9,26 @@ const uploadCloud = require("../config/cloudinary.js");
 router.get('/all', (req, res, next) => {
   Plan
   //filtrar planes por viaje y fechas, (genero y edad del logueado??) 
-    .find()
-    .populate("comments")
+    .find({})
+    // .populate("comments")
     .then(allThePlan => 
       res.json(allThePlan))
 });
 
 
-router.get('/plans/filtered/:minDate/:maxDate', (req, res, next) => {
-  console.log(req.params.minDate,req.params.maxDate, "estas son las fechas que paso")
+router.get('/filtered/:minDate/:maxDate', (req, res, next) => {
+  console.log("hola y bye")
+  console.log(req.params, "estas son las fechas que paso")
+  console.log(Date(req.params.minDate))
   Plan
+  
   //filtrar planes por viaje y fechas, (genero y edad del logueado??) 
-    .find({date: {$gte: ISODate(req.params.minDate), $lte: ISODate(req.params.maxDate)}})
-    .populate("comments")
-    .then(allThePlanWithInDates => 
-      res.json(allThePlanWithInDates))
+    // .find({date: {$gte: Date(req.params.minDate)}})
+    .find({date: {$gte: Date(req.params.minDate), $lte: Date(req.params.maxDate)}})
+    // .find( { $and: [ { date: {$gte: Date(req.params.minDate) } }, { date: {$lte: Date(req.params.maxDate)} } ] } )    
+    .then(allThePlanWithInDates => {
+      console.log(allThePlanWithInDates, "planes filtrados")
+      res.json(allThePlanWithInDates)})
 });
 
 

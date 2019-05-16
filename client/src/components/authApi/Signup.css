@@ -1,3 +1,14 @@
 .form {
 flex-direction: column;
 }
+
+.container {
+  width: 40%;
+  justify-content: center;
+}
+
+.formStyle{
+  border: 1px solid black;
+  width: 400px;
+  padding: 20px;
+}

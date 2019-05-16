@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import EditProfile from '../authApi/editProfile';
 import Travels from '../TravelApi/Travels';
+import "./GEditProfile.css";
+
 
 export default class GEditProfile extends Component {
   constructor(props) {
@@ -10,8 +12,8 @@ export default class GEditProfile extends Component {
   render() {
     return (
       <div>
-        <EditProfile loggedInUser={this.props.loggedInUser}></EditProfile>
-        <Travels loggedInUser={this.props.loggedInUser}></Travels>
+        <EditProfile className="container" loggedInUser={this.props.loggedInUser}></EditProfile>
+        <Travels className="container" loggedInUser={this.props.loggedInUser}></Travels>
       </div>
     )
   }

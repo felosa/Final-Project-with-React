@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import AuthService from "./AuthService";
 import { Link, Redirect } from "react-router-dom";
+import "./Profile.css";
+
 
  
 
@@ -22,11 +24,14 @@ class Profile extends Component {
   render() {
     console.log(this.state.loggedInUser)
     return this.state.loggedInUser && (
-      <div>
+      <div className="container">
          <div className="">
             <h2>
               <span>Hello, this is your profile {this.state.loggedInUser.username}</span>
             </h2>
+            <div>
+            <img className="imgProfi" alt="" src={this.state.loggedInUser.imageUrl}></img>
+            </div>
             <br></br>
             <span>Languajes that I speak: {this.state.loggedInUser.lang}</span>
             <br></br>
@@ -38,7 +43,6 @@ class Profile extends Component {
             <br></br>
             <span>Age: {this.state.loggedInUser.year}</span>
             <br></br>
-            <img alt="" src={this.state.loggedInUser.imageUrl}></img>
             
           </div>
           

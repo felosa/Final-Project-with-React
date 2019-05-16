@@ -15,8 +15,7 @@ export default class OneTravel extends Component {
   componentDidMount() {
     const id = this.props.travel.id;
     console.log(this.props.travel.id);
-    this.service.getOneTravel(id)
-    .then(travel => {
+    this.service.getOneTravel(id).then(travel => {
       console.log(travel.name);
       this.setState({
         ...this.state,
@@ -28,21 +27,31 @@ export default class OneTravel extends Component {
   render() {
     console.log(this.state.travel);
     return (
-      <div>
+      <div className="container">
         <p>
           Viaje actual donde se muestran los planes de ese viaje, buscando y
           anadiendo planes
         </p>
         {this.state.travel ? (
           <div>
-            <h2>{this.state.travel.name}</h2>
-            <h3>{this.state.travel.description}</h3>
+            <img alt="" src={this.state.travel.imageUrl} />
+            <h2>Travel name: {this.state.travel.name}</h2>
+            <h3>Country: {this.state.travel.country}</h3>
+            <h3>Leave day: {this.state.travel.description}</h3>
+            <h3>Description: {this.state.travel.description}</h3>
+            <br />
+            <br />
+
             <h3>Planes en los que estas apuntado en este viaje:</h3>
             <div>
               {this.state.travel.plans.map(plan => {
                 return (
                   <div>
-                    <Link actualplan={plan} to={`/plan/${plan._id}`}><p>{plan.name}</p></Link>
+                    <img alt="" src={plan.imageUrl} />
+
+                    <Link actualplan={plan} to={`/plan/${plan._id}`}>
+                      <p>{plan.name}</p>
+                    </Link>
                     {/* <Link actualtravel={travel} to={`/travel/${travel._id}`}>
                       <p>{travel.name}</p>
                     </Link> */}

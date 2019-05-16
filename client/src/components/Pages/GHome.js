@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import Profile from '../authApi/Profile';
+import ProfileIntro from '../authApi/ProfileIntro';
 import Travels from '../TravelApi/Travels';
 import Presentation from '../Others/Presentation';
 
 export default class GHome extends Component {
   render() {
     return (
-      <div>
+      <div className="doFlex">
         <Presentation></Presentation>        
-        <Profile></Profile>
+        <ProfileIntro></ProfileIntro>
       </div>
     )
   }

@@ -12,7 +12,7 @@ export default class GNewTravel extends Component {
   render() {
     console.log(this.props.match.params)
     return (
-      <div className="bigbox">
+      <div className="doFlex">
         <OneTravel travel={this.props.match.params}></OneTravel>
         <NewPlan travel={this.props.match.params}></NewPlan>
       </div>

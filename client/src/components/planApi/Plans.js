@@ -6,58 +6,43 @@ export default class Plans extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      minDate: null,
-      maxDate:null,
+      minDate_date: null,
+      maxDate_date: null,
       plansAll: null,
       plansSelected: null
     };
     this.service = new PlanService();
   }
 
-  // componentDidMount(){
-  //   this.service.getAllPlans()
-  //   .then(getPlans=>{
-  //     console.log(getPlans)
-  //     this.setState({
-  //       ...this.state,
-  //       plansAll: getPlans
-  //     })
-  //   })
-  // }
-
-  componentDidMount(){
-    console.log(this.state.minDate,this.state.maxDate)
-    this.service.getAllPlansWithInDates(this.state.minDate,this.state.maxDate)
-    .then(getPlans=>{
-      console.log(getPlans)
+  componentDidMount() {
+    this.service.getAllPlans()
+    .then(getPlans => {
       this.setState({
         ...this.state,
-        plansSelected: getPlans
-      })
-    })
+        plansAll: getPlans
+      });
+    });
   }
 
-  // componentDidMount() {
-  //   Promise.all([
-  //     this.service.getAllPlans(),
-  //     this.service.getAllPlansWithInDates(
-  //       this.state.minDate,
-  //       this.state.maxDate
-  //     )
-  //   ]).then(([res1, res2]) => {
-  //     this.setState({
-  //       ...this.setState,
-  //       minDate: "2000-05-16T00:00:00.000Z",
-  //       maxDate: "2000-05-16T00:00:00.000Z",
-  //       plansAll: res1,
-  //       plansSelected: res2
-  //     });
-  //   });
-  // }
+  handleFormSubmit = event => {
+    event.preventDefault();
+    console.log(this.state.minDate_date, this.state.maxDate_date);
+    this.service
+      .getAllPlansWithInDates(this.state.minDate_date, this.state.maxDate_date)
+      .then(response => {
+        this.setState({
+          minDate_date: "",
+          maxDate_date: "",
+          redirect: true,
+          plansAll: response
+        });
+      })
+      .catch(error => console.log(error));
+  };
 
   handleChangeAsDate = event => {
     const { name, value } = event.target;
-    
+
     this.setState({
       ...this.state,
       [name]: value,
@@ -66,39 +51,90 @@ export default class Plans extends Component {
   };
 
   render() {
+    console.log(this.state.plansAll);
     return (
-      // this.state.plansAll && (
-        <div>
-          <h2>Lista de planes</h2>
+      this.state.plansAll && (
+      <div className="container">
+        <h2>Lista de planes</h2>
 
-          <form onSubmit={this.handleFormSubmit} className="form">
-            <label>Arrive Date:</label>
-            <input
-              type="date"
-              name="minDate"
-              value={this.state.minDate}
-              onChange={e => this.handleChangeAsDate(e)}
-            />
-            <label>Leave Date:</label>
-            <input
-              type="date"
-              name="maxDate"
-              value={this.state.maxDate}
-              onChange={e => this.handleChangeAsDate(e)}
-            />
-            <br />
-            <br />
+        <form onSubmit={this.handleFormSubmit} className="form">
+          <label>Arrive Date:</label>
+          <input
+            type="date"
+            name="minDate"
+            value={this.state.minDate}
+            onChange={e => this.handleChangeAsDate(e)}
+          />
+          <label>Leave Date:</label>
+          <input
+            type="date"
+            name="maxDate"
+            value={this.state.maxDate}
+            onChange={e => this.handleChangeAsDate(e)}
+          />
+          <br />
+          <br />
 
-            <input type="submit" value="Search" />
-          </form> 
+          <input type="submit" value="Search" />
+        </form>
 
-          
-        </div>
+        {this.state.plansAll.map((plan, idx) => {
+  return (
+<div className="card">
+  <div className="card-image">
+    <figure className="image is-4by3">
+      <img src={plan.imageUrl} alt=""/>
+    </figure>
+  </div>
+  <div className="card-content">
+    <div className="media">
+      <div className="media-left">
+      </div>
+      <div className="media-content">
+     
+        <p className="title is-4"> <Link actualplan={plan} to={`/plan/${plan._id}`}>             <p>{plan.name}</p>
+            </Link></p>
+        <p className="subtitle is-6"><h3>Date:</h3>{plan.date}</p>
+        <p className="subtitle is-6"><h3>City:</h3>{plan.city}</p>
+        <p className="subtitle is-6"><h3>Hour:</h3>{plan.hour}</p>
+      </div>
+    </div>
+
+    <div className="content">
+      Description: {plan.description}
+      <br></br>
+    </div>
+  </div>
+</div>
+
+    // <div>
+    //   <div key={idx} className="boxMovie">
+    //     <div className="lista">
+    //         <h3>
+    //           <img alt="" src={plan.imageUrl}/>
+    //           <Link actualplan={plan} to={`/plan/${plan._id}`}>
+    //             <p>{plan.name}</p>
+    //           </Link>
+    //           <h3>Date:</h3>
+    //           <p>{plan.date}</p>
+    //           <h3>City:</h3>
+    //           <p>{plan.city}</p>
+    //           <h3>Hour:</h3>
+    //           <p>{plan.hour}</p>
+    //         </h3>
+    //     </div>
+    //   </div>
+    // </div>
+  );
+})}
+
+       
+      </div>
       )
-    // );
+    )
+    
   }
 }
-
 
 // {this.state.plansAll.map((plan, idx) => {
 //   return (
@@ -117,8 +153,26 @@ export default class Plans extends Component {
 //       :
 //       <div></div>
 
-
 //     }
+//     </div>
+//   );
+// })}
+
+
+
+// {this.state.plansAll.map((plan, idx) => {
+//   return (
+//     <div>
+//       <div key={idx} className="boxMovie">
+//         <div>
+//           <p>
+//             <Link actualplan={plan} to={`/plan/${plan._id}`}>
+//               <p>{plan.name}</p>
+//             </Link>
+//           </p>
+//           {/* <Link className="" to={`/${plan._id}`}>{plan.name}</Link> */}
+//         </div>
+//       </div>
 //     </div>
 //   );
 // })}

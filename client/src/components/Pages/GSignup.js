@@ -5,7 +5,7 @@ import Signup from '../authApi/Signup';
 export default class GSignup extends Component {
   render() {
     return (
-      <div className="bigbox">
+      <div className="doFlex">
         <Presentation></Presentation>
         <Signup></Signup>
       </div>

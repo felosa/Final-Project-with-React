@@ -27,7 +27,7 @@ export default class Travels extends Component {
 
   render() {
     return this.props.loggedInUser && (
-      <div>
+      <div className="container">
         <p>Lista de travels de <span>{this.props.loggedInUser.username}</span></p>
         
 {
@@ -35,8 +35,9 @@ export default class Travels extends Component {
  <div>{this.props.loggedInUser.travels.map((travel)=>{
    return (
    <div>
+     <img alt="" src={travel.imageUrl}/>
      <Link actualtravel={travel} to={`/travel/${travel._id}`}><p>{travel.name}</p></Link>
-    <p>{travel.description}</p> 
+     <p>Country: {travel.country}</p> 
     </div>
    )
  })}</div> 

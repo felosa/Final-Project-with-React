@@ -100,7 +100,7 @@ export default class newPlan extends Component {
       return <Redirect to='/travel' />
     }
     return (
-        <div>
+        <div className="container">
         <form onSubmit={this.handleFormSubmit} className="form">
           <label>Plan Name:</label>
           <input type="text" name="name" value={this.state.name} onChange={ e => this.handleChange(e)}/>

@@ -43,7 +43,7 @@ class Login extends Component {
     //   return <Redirect to="/" />;
     // }
     return (
-      <div>
+      <div className="navbar-item">
           <form onSubmit={e => this.handleFormSubmit(e)}>
           <label>Username:</label>
           <input
@@ -52,7 +52,7 @@ class Login extends Component {
             value={this.state.username}
             onChange={e => this.handleChange(e)}
           />
-
+          <br></br>
           <label>Password:</label>
           <input
             type="password"
@@ -61,7 +61,9 @@ class Login extends Component {
             onChange={e => this.handleChange(e)}
           />
 
-          <input type="submit" value="Login" />
+          <div>
+            <input className="myButton" type="submit" value="Login" />
+          </div>
         </form>
       </div>
     );

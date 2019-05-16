@@ -56,7 +56,7 @@ export default class Chat extends Component {
   render() {
     console.log(this.state.plan.comments);
     return (
-      <div>
+      <div className="container">
         <p> aqui va el chat a los comentarios</p>
         {this.state.plan ? 
           <div>

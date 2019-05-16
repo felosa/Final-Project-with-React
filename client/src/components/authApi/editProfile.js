@@ -74,7 +74,7 @@ class EditProfile extends Component {
     }
     console.log(this.state.user,"editar")
     return (this.state.user && 
-      <div>
+      <div className="container">
         lang: "",
         country: "",
         description:"",

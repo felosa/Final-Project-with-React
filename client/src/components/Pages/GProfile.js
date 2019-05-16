@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Profile from '../authApi/Profile';
 import Travels from '../TravelApi/Travels';
 import AuthService from '../authApi/AuthService';
+import "./GEditProfile.css";
+
 
 
 
@@ -20,7 +22,7 @@ export default class GProfile extends Component {
   render() {
     // debugger
     return (
-      <div className="bigbox">
+      <div className="doFlex">
         <Profile></Profile>
         <Travels loggedInUser={this.props.loggedInUser}></Travels>
       </div>

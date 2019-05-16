@@ -6,9 +6,9 @@ export default class GTravel extends Component {
   render() {
     console.log(this.props.travel)
     return (
-      <div className="bigbox">
-        <OneTravel travel={this.props.match.params}></OneTravel>
-        <Plans></Plans>
+      <div className="doFlex">
+        <OneTravel className="container" travel={this.props.match.params}></OneTravel>
+        <Plans className="container"></Plans>
       </div>
     )
   }

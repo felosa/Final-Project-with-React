@@ -14,35 +14,6 @@ export default class Navigator extends Component {
     this.service = new AuthService();
   }
 
-  
-  // handleFormSubmit(event) {
-  //   event.preventDefault();
-  //   const username = this.state.username;
-  //   const password = this.state.password;
-  //   this.service.login(username, password).then(user => {
-  //     if (user) {
-  //       console.log(user, "saca usuario")
-  //       this.setState({ username: "", password: "", loggedInUser:true}, () =>
-  //       this.props.setUser(user)
-  //       );
-  //     } else {
-  //       this.setState({
-  //         username: "",
-  //         password: ""
-  //       });
-  //     }
-  //   });
-  //    .catch(error => {
-  //       console.log(error)
-  //       this.setState({ error: error.response.data.message});
-  //   })
-  // }
-
-  // handleChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({ [name]: value });
-  //   this.state.error = ''
-  // };
 
   logoutUser = () =>{
     this.service.logout()
@@ -53,59 +24,90 @@ export default class Navigator extends Component {
     })
   }
 
-  render() {
+  
+  
+
+// render(){
+//   return(
+//     <div>
+//     <nav className="navbar" role="navigation" aria-label="main navigation">
+
+//   <div id="navbarBasicExample" className="navbar-menu">
+//     <div className="navbar-start">
+//       <a className="navbar-item">
+//         Home
+//       </a>
+
+//       <div className="navbar-item has-dropdown is-hoverable">
+//         <a className="navbar-link">
+//           More
+//         </a>
+
+//         <div className="navbar-dropdown">
+//           <a className="navbar-item">
+//             About
+//           </a>
+//           <a className="navbar-item">
+//             Jobs
+//           </a>
+//           <a className="navbar-item">
+//             Contact
+//           </a>
+//           <hr className="navbar-divider"/>
+//           <a className="navbar-item">
+//             Report an issue
+//           </a>
+//         </div>
+//       </div>
+//     </div>
+
+//     <div className="navbar-end">
+//       <div className="navbar-item">
+//           <Login loggedInUser={this.props.loggedInUser} setUser={this.props.setUser}></Login>
+        
+//       </div>
+//     </div>
+//   </div>
+// </nav>
+// </div>
+  
+// )
+// }
+
+
+
+render() {
     console.log(this.props.loggedInUser)
     if (this.props.loggedInUser) {
       return (
-        <div>
-        <p>Hola {this.props.loggedInUser.username}</p>
+        <div className="container">
+        
+        <p>Welcome again, {this.props.loggedInUser.username}</p>
+        
+        <Link to="/profile"><span>Mi perfil</span></Link>
+        <div className="navbar-end">
         <div className="imgProf">
           <img alt="" src={this.props.loggedInUser.imageUrl}></img>
         </div>
-        <Link to="/profile"><span>Mi perfil</span></Link>
         <Link to='/'>
-                <button onClick={() => this.logoutUser()}>Logout</button>
+                <button className="button is-primary" onClick={() => this.logoutUser()}>Logout</button>
         </Link>
+        </div>
         </div>
       )
     }
     else {
     return (
-      <div>
-        <Login loggedInUser={this.props.loggedInUser} setUser={this.props.setUser}></Login>
-        {/* <div>
-        <Link to='/profile'>
-                <span>Mi perfil</span>
-        </Link>
-        
-        </div>
-        <form onSubmit={e => this.handleFormSubmit(e)}>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={this.state.username}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={this.state.password}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <input type="submit" value="Login" />
-
-        
-          <Link to='/'>
-                <button onClick={() => this.logoutUser()}>Logout</button>
-          </Link>
-        </form> */}
-      </div>
+ <div className="navbar-end">
+      <div className="navbar-item">
+      <Login loggedInUser={this.props.loggedInUser} setUser={this.props.setUser}></Login>
+    
+  </div>
+</div>
     )
       }
       
   }
 }
+
+

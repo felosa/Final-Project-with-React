@@ -85,7 +85,8 @@ class Signup extends Component {
     }
     
     return(
-      <div>
+      <div className="container">
+      <div className="formStyle">
         <form onSubmit={this.handleFormSubmit} className="form">
           <label>Username:</label>
           <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
@@ -114,7 +115,7 @@ class Signup extends Component {
           <br></br>
           <input type="submit" value="Signup" />
         </form>
-  
+        </div>
       </div>
     )
   }

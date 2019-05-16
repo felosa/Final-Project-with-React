@@ -110,7 +110,7 @@ export default class newTravel extends Component {
       return <Redirect to="/profile" />;
     }
     return (
-      <div>
+      <div className="container">
         <form onSubmit={this.handleFormSubmit} className="form">
           <label>Travel Name:</label>
           <input
