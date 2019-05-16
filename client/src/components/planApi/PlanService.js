@@ -19,6 +19,7 @@ class PlanService {
   }
 
   getAllPlansWithInDates = (minDate,maxDate) => {
+    console.log(minDate,maxDate)
     return this.service.get(`/plan/filtered/${minDate}/${maxDate}`,{})
     .then(response => response.data)
     .catch(err => console.error(err))

@@ -17,6 +17,7 @@ router.get('/all', (req, res, next) => {
 
 
 router.get('/plans/filtered/:minDate/:maxDate', (req, res, next) => {
+  console.log(req.params.minDate,req.params.maxDate, "estas son las fechas que paso")
   Plan
   //filtrar planes por viaje y fechas, (genero y edad del logueado??) 
     .find({date: {$gte: ISODate(req.params.minDate), $lte: ISODate(req.params.maxDate)}})
@@ -70,7 +71,6 @@ router.post('/:id/new', (req, res) => {
   Travel
   .findByIdAndUpdate(id, {$addToSet: {plans: newPlan }}, {new: true})
   .populate("plans")
-  .populate("comments")
 
   .then(travel=> {
     newPlan.save().then(planNew=>res.status(201).json(planNew))
@@ -93,12 +93,10 @@ router.delete('/delete/:id', (req, res,next) => {
 
 router.put('/:id/edit', (req,res) => {
   const idw = req.params.id
-  console.log(idw, "meter en el plan al usuario")
   const {participants} = req.body;
   const newParticipant = req.user
   Plan.findByIdAndUpdate(req.params.id, {$addToSet: {participants: newParticipant }}, {new: true})
   .populate("participants")
-  .populate("comments")
   .then((data) =>{
     res.json(data);
   })

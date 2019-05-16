@@ -15,7 +15,8 @@ export default class OneTravel extends Component {
   componentDidMount() {
     const id = this.props.travel.id;
     console.log(this.props.travel.id);
-    this.service.getOneTravel(id).then(travel => {
+    this.service.getOneTravel(id)
+    .then(travel => {
       console.log(travel.name);
       this.setState({
         ...this.state,

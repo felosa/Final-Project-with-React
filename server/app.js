@@ -82,7 +82,7 @@ app.use('/api/comment', commentRouter);
 
 app.use('/api', require('./routes/file-upload-routes'));
 
-app.use((req, res) => { console.log(req);    res.sendFile(__dirname + "/public/index.html");    });
+app.use((req, res) => { res.sendFile(__dirname + "/public/index.html");    });
 
 
 module.exports = app;

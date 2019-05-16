@@ -51,6 +51,8 @@ export default class OnePlan extends Component {
             <h2>{this.state.plan.name}</h2>
             <h2>{this.state.plan.date}</h2>
             <h3>{this.state.plan.description}</h3>
+            <h2>Creador del plan</h2>
+            <h3>{this.state.plan.author}</h3>
             <h3>Personas que estan apuntadas a esta actividad:</h3>
             <div>
               {this.state.plan.participants.map(person => {
@@ -85,7 +87,7 @@ export default class OnePlan extends Component {
         <Link
           to={`/profile`}
         >
-        <button onClick={() => this.addPlan()}>Apuntate a este viaje</button>
+        <button onClick={() => this.addPlan()}>Apuntate a este plan</button>
         </Link>
       </div>
     );

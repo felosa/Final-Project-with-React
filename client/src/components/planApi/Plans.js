@@ -6,8 +6,8 @@ export default class Plans extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      minDate: "",
-      maxDate: "",
+      minDate: null,
+      maxDate:null,
       plansAll: null,
       plansSelected: null
     };
@@ -20,43 +20,44 @@ export default class Plans extends Component {
   //     console.log(getPlans)
   //     this.setState({
   //       ...this.state,
-  //       plans: getPlans
+  //       plansAll: getPlans
   //     })
   //   })
   // }
 
-  // componentDidMount(){
-  //   this.service.getAllPlansWithInDates(this.state.minDate,this.state.maxDate)
-  //   .then(getPlans=>{
-  //     console.log(getPlans)
-  //     this.setState({
-  //       ...this.state,
-  //       plans: getPlans
-  //     })
-  //   })
-  // }
-
-  componentDidMount() {
-    Promise.all([
-      this.service.getAllPlans(),
-      this.service.getAllPlansWithInDates(
-        this.state.minDate,
-        this.state.maxDate
-      )
-    ]).then(([res1, res2]) => {
+  componentDidMount(){
+    console.log(this.state.minDate,this.state.maxDate)
+    this.service.getAllPlansWithInDates(this.state.minDate,this.state.maxDate)
+    .then(getPlans=>{
+      console.log(getPlans)
       this.setState({
-        ...this.setState,
-        minDate: "2000-05-16T00:00:00.000Z",
-        maxDate: "2000-05-16T00:00:00.000Z",
-        plansAll: res1,
-        plansSelected: res2
-      });
-    });
+        ...this.state,
+        plansSelected: getPlans
+      })
+    })
   }
+
+  // componentDidMount() {
+  //   Promise.all([
+  //     this.service.getAllPlans(),
+  //     this.service.getAllPlansWithInDates(
+  //       this.state.minDate,
+  //       this.state.maxDate
+  //     )
+  //   ]).then(([res1, res2]) => {
+  //     this.setState({
+  //       ...this.setState,
+  //       minDate: "2000-05-16T00:00:00.000Z",
+  //       maxDate: "2000-05-16T00:00:00.000Z",
+  //       plansAll: res1,
+  //       plansSelected: res2
+  //     });
+  //   });
+  // }
 
   handleChangeAsDate = event => {
     const { name, value } = event.target;
-
+    
     this.setState({
       ...this.state,
       [name]: value,
@@ -65,9 +66,8 @@ export default class Plans extends Component {
   };
 
   render() {
-    console.log(this.state.plansAll,this.state.plansSelected);
     return (
-      this.state.plansAll && (
+      // this.state.plansAll && (
         <div>
           <h2>Lista de planes</h2>
 
@@ -90,34 +90,35 @@ export default class Plans extends Component {
             <br />
 
             <input type="submit" value="Search" />
-          </form>
+          </form> 
 
-          {this.state.plansAll.map((plan, idx) => {
-            return (
-              <div key={idx} className="boxMovie">
-                <div>
-                  <img alt="" src={plan.image_url} />
-                </div>
-                <div>
-                  <p>
-                    <Link actualplan={plan} to={`/plan/${plan._id}`}>
-                      <p>{plan.name}</p>
-                    </Link>
-                  </p>
-                  {/* <Link className="" to={`/${plan._id}`}>{plan.name}</Link> */}
-                </div>
-              </div>
-            );
-          })}
-
-
-
-
-     
-
-
+          
         </div>
       )
-    );
+    // );
   }
 }
+
+
+// {this.state.plansAll.map((plan, idx) => {
+//   return (
+//     <div>
+//     {this.state.minDate <= plan.date >= this.state ?
+//     <div key={idx} className="boxMovie">
+//       <div>
+//         <p>
+//           <Link actualplan={plan} to={`/plan/${plan._id}`}>
+//             <p>{plan.name}</p>
+//           </Link>
+//         </p>
+//         {/* <Link className="" to={`/${plan._id}`}>{plan.name}</Link> */}
+//       </div>
+//     </div>
+//       :
+//       <div></div>
+
+
+//     }
+//     </div>
+//   );
+// })}

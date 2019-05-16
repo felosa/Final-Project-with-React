@@ -55,7 +55,7 @@ class App extends Component {
               <GHome loggedInUser={this.state.loggedInUser}/>)}/>
 
             <Route exact path="/profile" render={() => (
-              <GProfile loggedInUser={this.state.loggedInUser}/>)}/>
+              <GProfile loggedInUser={this.state.loggedInUser} setUser={this.setTheUser}/>)}/>
 
             <Route exact path="/editprofile" render={() => (
               <GEditProfile loggedInUser={this.state.loggedInUser}/>)}/>    

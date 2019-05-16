@@ -9,10 +9,14 @@ const Comment = require("../models/Comment");
 
 router.post('/:id/new', (req, res) => {
   const id = req.params.id;
+  const autor = req.user.username
+  const photo = req.user.imageUrl
   console.log(id,req.body.message)
   const {message} = req.body;
   const comment = {
-    author: req.user,
+    // author: req.user,
+    authorPhoto: photo,
+    author: autor,
     message,
     // author //añado autor aqui
   }

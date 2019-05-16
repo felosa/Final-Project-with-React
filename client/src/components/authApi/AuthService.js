@@ -18,14 +18,12 @@ class AuthService {
   }
 
   handleUpload = (theFile) => {
-    // console.log('file in service: ', theFile)
     return this.service.post('/upload', theFile)
       .then(res => res.data)
       .catch(err => console.error(err));
   }
 
   login = (username, password) => {
-    console.log(username, password)
     return this.service.post('/auth/login', {username, password})
     .then(response => 
       response.data
