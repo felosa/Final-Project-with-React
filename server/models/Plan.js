@@ -11,7 +11,6 @@ const planSchema = new Schema({
   lang: String,
   genre: String,
   hour: String,
-  maxYear: Number,
   place: String,
   imageUrl: String,
   imgName: String,

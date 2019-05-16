@@ -25,8 +25,8 @@ router.post('/:id/new', (req, res) => {
   .findByIdAndUpdate(id, {$addToSet: {comments: newComment }}, {new: true})
   .populate("comments")
 
-  .then(comment=> {
-    newComment.save().then(commentNew=>res.status(201).json(commentNew))
+  .then(comments=> {
+    newComment.save().then(commentNew=>res.status(201).json(comments))
     })
   .catch(err=> res.status(500).json(err))
   

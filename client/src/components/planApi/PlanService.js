@@ -34,15 +34,17 @@ class PlanService {
 
   //Mostrar planes añandidos a ese viaje en /travel
   selectedPlans = () => {
-    return this.service.get("/plan/:id/plansoftravel",{})
+    return this.service.get("/plan/:id/plansoftravel")
     .then(response => response.data)
     .catch(err => console.error(err))
   }
 
 //Mostrar un plan en concreto en /plan
   getOnePlan = (id) => {
-    return this.service.get(`/plan/one/${id}`,{})
-    .then(response => response.data)
+    return this.service.get(`/plan/one/${id}`)
+    .then(response => {
+      console.log("heyyyyyyyyyy   hhhhhhhhhh")
+      return response.data})
     .catch(err => console.error(err))
   }
 

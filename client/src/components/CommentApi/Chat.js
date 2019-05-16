@@ -16,9 +16,8 @@ export default class Chat extends Component {
 
   componentDidMount() {
     const id = this.props.plan.id;
-    console.log(this.props.plan.id);
     this.servicePlan.getOnePlan(id).then(getPlan => {
-      console.log(getPlan);
+      console.log(getPlan, "plannnnnnnnn didmount");
       this.setState({
         ...this.state,
         plan: getPlan
@@ -26,6 +25,7 @@ export default class Chat extends Component {
     });
   }
 
+ 
   handleFormSubmit = event => {
     event.preventDefault();
     // , lang, country, description, genre,year
@@ -36,11 +36,11 @@ export default class Chat extends Component {
     // , lang, country, description, genre,year
     this.service
       .createNewComment(message, id)
-      .then(() => {
-        console.log(message);
+      .then((plan) => {
         this.setState({
           message: "",
-          redirect: true
+          plan
+
         });
       })
       .catch(error => console.log(error));

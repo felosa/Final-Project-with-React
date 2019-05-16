@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PlanService from "./PlanService";
 import { Link } from "react-router-dom";
+import { formatDate } from "../TravelApi/OneTravel";
+
 
 export default class Plans extends Component {
   constructor(props) {
@@ -15,10 +17,11 @@ export default class Plans extends Component {
   }
 
   componentDidMount() {
-    this.service.getAllPlans().then(getPlans => {
+    this.service.getAllPlans().then(response => {
+      const responseWithCity = response.filter(plan=> plan.city.toLowerCase() === this.props.city.toLowerCase())
       this.setState({
         ...this.state,
-        plansAll: getPlans
+        plansAll: responseWithCity
       });
     });
   }
@@ -29,11 +32,10 @@ export default class Plans extends Component {
     this.service
       .getAllPlansWithInDates(this.state.minDate_date, this.state.maxDate_date)
       .then(response => {
-        this.setState({
-          minDate_date: "",
-          maxDate_date: "",
+        const responseWithCity = response.filter(plan=> plan.city.toLowerCase() === this.props.city.toLowerCase())
+        this.setState({         
           redirect: true,
-          plansAll: response
+          plansAll: responseWithCity
         });
       })
       .catch(error => console.log(error));
@@ -50,7 +52,6 @@ export default class Plans extends Component {
   };
 
   render() {
-    console.log(this.state.plansAll);
     return (
       this.state.plansAll && (
         <div className="container">
@@ -95,7 +96,7 @@ export default class Plans extends Component {
                           </Link>
                         </p>
                         <p className="subtitle is-6">
-                          <h3>Date: {plan.date}</h3>
+                          <h3>Date: {formatDate(plan.date)}</h3>
                         </p>
                         <p className="subtitle is-6">
                           <h3>City: {plan.city}</h3>                          

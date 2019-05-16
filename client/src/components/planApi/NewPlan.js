@@ -97,7 +97,7 @@ export default class newPlan extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to='/travel' />
+      return <Redirect to={`/travel/${this.props.travel.id}`} />
     }
     return (
         <div className="container">
@@ -122,9 +122,6 @@ export default class newPlan extends Component {
           <br></br>
           <label>hour:</label>
           <input type="text" name="hour" value={this.state.hour} onChange={ e => this.handleChange(e)} />
-          <br></br>
-          <label>MaxYear:</label>
-          <input type="text" name="maxYear" value={this.state.maxYear} onChange={ e => this.handleChange(e)}/>
           <br></br>
           <label>Place:</label>
           <input type="text" name="place" value={this.state.place} onChange={ e => this.handleChange(e)}/>

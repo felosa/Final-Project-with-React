@@ -18,13 +18,14 @@ router.get('/all', (req, res, next) => {
 
 router.get('/filtered/:minDate/:maxDate', (req, res, next) => {
   console.log("hola y bye")
-  console.log(req.params, "estas son las fechas que paso")
+  console.log(new Date(req.params.minDate), "estas son las fechas que paso")
+
   console.log(Date(req.params.minDate))
   Plan
   
   //filtrar planes por viaje y fechas, (genero y edad del logueado??) 
     // .find({date: {$gte: Date(req.params.minDate)}})
-    .find({date: {$gte: Date(req.params.minDate), $lte: Date(req.params.maxDate)}})
+    .find({ $and: [ { date: {$gte: new Date(req.params.minDate) } }, { date: {$lte: new Date(req.params.maxDate)} } ] } )
     // .find( { $and: [ { date: {$gte: Date(req.params.minDate) } }, { date: {$lte: Date(req.params.maxDate)} } ] } )    
     .then(allThePlanWithInDates => {
       console.log(allThePlanWithInDates, "planes filtrados")
@@ -48,9 +49,12 @@ router.get('/one/:id', (req, res, next) => {
   Plan
   // mostrar plan especifico.
     .findById(req.params.id)
+    .populate( "comments")
     .populate("participants")
-    .populate("comments")
-    .then(Plan => res.json(Plan))
+    .populate("author")
+    .then(plan => {
+      console.log(plan, "plan")
+      return res.json(plan)})
 });
 
 

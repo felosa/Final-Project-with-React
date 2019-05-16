@@ -1,51 +1,42 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import TravelService from "./TravelService";
+
+export const formatDate =(date)=>{
+  const converseDate = new Date(date);
+  return `${converseDate.getDate()}-${converseDate.getMonth()}-${converseDate.getFullYear()}`
+}
 
 export default class OneTravel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      travel: null,
-      redirect: false
-    };
-    this.service = new TravelService();
+  componentDidMount(){
+    console.log("didmount de travel")
   }
-
-  componentDidMount() {
-    const id = this.props.travel.id;
-    console.log(this.props.travel.id);
-    this.service.getOneTravel(id).then(travel => {
-      console.log(travel.name);
-      this.setState({
-        ...this.state,
-        travel: travel
-      });
-    });
-  }
-
   render() {
-    console.log(this.state.travel);
+    console.log(this.props.travel, "travelllllllll");
+    
+    const arrivalDate = formatDate(this.props.travel.minDate)
+    const departureDate = formatDate(this.props.travel.maxDate)
+
     return (
       <div className="container">
         <p>
           Viaje actual donde se muestran los planes de ese viaje, buscando y
           anadiendo planes
         </p>
-        {this.state.travel ? (
+        {this.props.travel && this.props.travel.plans && (
           <div>
-            <img alt="" src={this.state.travel.imageUrl} />
-            <h2>Travel name: {this.state.travel.name}</h2>
-            <h3>Country: {this.state.travel.country}</h3>
-            <h3>Arrive day: {this.state.travel.minDate}</h3>
-            <h3>Leave day: {this.state.travel.maxDate}</h3>
-            <h3>Description: {this.state.travel.description}</h3>
+            <img alt="" src={this.props.travel.imageUrl} />
+            <h2>Travel name: {this.props.travel.name}</h2>
+            <h3>Country: {this.props.travel.country}</h3>
+            <h3>City: {this.props.travel.city}</h3>
+            <h3>Arrive day: {arrivalDate}</h3>
+            <h3>Leave day: {departureDate}</h3>
+            <h3>Description: {this.props.travel.description}</h3>
             <br />
             <br />
 
             <h3>Planes en los que estas apuntado en este viaje:</h3>
             <div>
-              {this.state.travel.plans.map(plan => {
+              {this.props.travel.plans.map(plan => {
                 return (
                   <div className="Flex">
                     <div>
@@ -55,7 +46,7 @@ export default class OneTravel extends Component {
                     <Link actualplan={plan} to={`/plan/${plan._id}`}>
                       <p>{plan.name}</p>
                     </Link>
-                      <p>Date: {plan.date}</p>
+                      <p>Date: {formatDate(plan.date)}</p>
                       <p>Hour: {plan.hour}</p>
                       <p>Place: {plan.place}</p>
 
@@ -68,13 +59,11 @@ export default class OneTravel extends Component {
               })}
             </div>
           </div>
-        ) : (
-          ""
-        )}
+        ) }
 
         <Link
           travel={this.props.travel.id}
-          to={`/newplan/${this.props.travel.id}`}
+          to={`/newplan/${this.props.travel._id}`}
         >
           <button>New Plan</button>
         </Link>

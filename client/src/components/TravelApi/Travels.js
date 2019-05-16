@@ -29,7 +29,7 @@ export default class Travels extends Component {
     return this.props.loggedInUser && (
       <div className="container">
         <p>Lista de travels de <span>{this.props.loggedInUser.username}</span></p>
-        
+        <Link to="/newtravel"><button>New Travel</button></Link>
 {
  this.props.loggedInUser.travels ?
  <div>{this.props.loggedInUser.travels.map((travel)=>{
@@ -45,7 +45,7 @@ export default class Travels extends Component {
  :
 <span>No hay viajes</span>
 }
-        <Link to="/newtravel"><button>New Travel</button></Link>
+       
       </div>
     )
   }

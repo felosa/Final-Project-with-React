@@ -50,8 +50,9 @@ class TravelService {
   }
 
   //editar viaje en /profile, igual no lo implemento
-  editTravel = () => {
-    return this.service.put("/travel/edit/:id",{})
+  editTravel = (planId, travelId) => {
+    console.log(planId, travelId)
+    return this.service.patch(`/travel/edit/${travelId}`, {planId})
     .then(response => response.data)
     .catch(err => console.error(err))
   }

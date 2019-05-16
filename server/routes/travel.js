@@ -76,12 +76,15 @@ router.delete('/delete/:id', (req, res,next) => {
 });
 
 
-router.put('/edit/:id', (req,res) => {
-const id = req.params.id
+router.patch('/edit/:id', (req,res) => {
+const travelId = req.params.id
+const planId = req.body.planId
+console.log('travelId', travelId, 'planId', planId)
   
-  Travel.findByIdAndUpdate(id, req.body)
+  Travel.findByIdAndUpdate(travelId, {$addToSet: {plans: planId }}, {new: true}) 
   .then((travel) =>{
-    res.json(travel);
+    console.log("travel", travel)
+    return res.json(travel);
   })
   .catch((err) =>{
     console.log(err);
