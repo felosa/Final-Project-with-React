@@ -15,8 +15,7 @@ export default class Plans extends Component {
   }
 
   componentDidMount() {
-    this.service.getAllPlans()
-    .then(getPlans => {
+    this.service.getAllPlans().then(getPlans => {
       this.setState({
         ...this.state,
         plansAll: getPlans
@@ -54,85 +53,91 @@ export default class Plans extends Component {
     console.log(this.state.plansAll);
     return (
       this.state.plansAll && (
-      <div className="container">
-        <h2>Lista de planes</h2>
+        <div className="container">
+          <h2>Lista de planes</h2>
 
-        <form onSubmit={this.handleFormSubmit} className="form">
-          <label>Arrive Date:</label>
-          <input
-            type="date"
-            name="minDate"
-            value={this.state.minDate}
-            onChange={e => this.handleChangeAsDate(e)}
-          />
-          <label>Leave Date:</label>
-          <input
-            type="date"
-            name="maxDate"
-            value={this.state.maxDate}
-            onChange={e => this.handleChangeAsDate(e)}
-          />
-          <br />
-          <br />
+          <form onSubmit={this.handleFormSubmit} className="form">
+            <label>Arrive Date:</label>
+            <input
+              type="date"
+              name="minDate"
+              value={this.state.minDate}
+              onChange={e => this.handleChangeAsDate(e)}
+            />
+            <label>Leave Date:</label>
+            <input
+              type="date"
+              name="maxDate"
+              value={this.state.maxDate}
+              onChange={e => this.handleChangeAsDate(e)}
+            />
+            <br />
+            <br />
 
-          <input type="submit" value="Search" />
-        </form>
+            <input type="submit" value="Search" />
+          </form>
+          <div className="doitFlex doList">
+            {this.state.plansAll.map((plan, idx) => {
+              return (
+                <div className="width200">
+                  <div className="card-image">
+                    <img className="imgPlan" src={plan.imageUrl} alt="" />
+                  </div>
+                  <div className="card-content">
+                    <div className="media">
+                      <div className="media-left" />
+                      <div className="media-content">
+                        <p className="title is-4">
+                          {" "}
+                          <Link actualplan={plan} to={`/plan/${plan._id}`}>
+                            {" "}
+                            <p>{plan.name}</p>
+                          </Link>
+                        </p>
+                        <p className="subtitle is-6">
+                          <h3>Date: {plan.date}</h3>
+                        </p>
+                        <p className="subtitle is-6">
+                          <h3>City: {plan.city}</h3>                          
+                        </p>
+                        <p className="subtitle is-6">
+                          <h3>Hour: {plan.hour}</h3>
+                          
+                        </p>
+                      </div>
+                    </div>
 
-        {this.state.plansAll.map((plan, idx) => {
-  return (
-<div className="card">
-  <div className="card-image">
-    <figure className="image is-4by3">
-      <img src={plan.imageUrl} alt=""/>
-    </figure>
-  </div>
-  <div className="card-content">
-    <div className="media">
-      <div className="media-left">
-      </div>
-      <div className="media-content">
-     
-        <p className="title is-4"> <Link actualplan={plan} to={`/plan/${plan._id}`}>             <p>{plan.name}</p>
-            </Link></p>
-        <p className="subtitle is-6"><h3>Date:</h3>{plan.date}</p>
-        <p className="subtitle is-6"><h3>City:</h3>{plan.city}</p>
-        <p className="subtitle is-6"><h3>Hour:</h3>{plan.hour}</p>
-      </div>
-    </div>
+                    <div className="content">
+                      Description: {plan.description}
+                      <br />
+                    </div>
+                  </div>
+                </div>
 
-    <div className="content">
-      Description: {plan.description}
-      <br></br>
-    </div>
-  </div>
-</div>
-
-    // <div>
-    //   <div key={idx} className="boxMovie">
-    //     <div className="lista">
-    //         <h3>
-    //           <img alt="" src={plan.imageUrl}/>
-    //           <Link actualplan={plan} to={`/plan/${plan._id}`}>
-    //             <p>{plan.name}</p>
-    //           </Link>
-    //           <h3>Date:</h3>
-    //           <p>{plan.date}</p>
-    //           <h3>City:</h3>
-    //           <p>{plan.city}</p>
-    //           <h3>Hour:</h3>
-    //           <p>{plan.hour}</p>
-    //         </h3>
-    //     </div>
-    //   </div>
-    // </div>
-  );
-})}
-
-       
-      </div>
+                // <div>
+                //   <div key={idx} className="boxMovie">
+                //     <div className="lista">
+                //         <h3>
+                //           <img alt="" src={plan.imageUrl}/>
+                //           <Link actualplan={plan} to={`/plan/${plan._id}`}>
+                //             <p>{plan.name}</p>
+                //           </Link>
+                //           <h3>Date:</h3>
+                //           <p>{plan.date}</p>
+                //           <h3>City:</h3>
+                //           <p>{plan.city}</p>
+                //           <h3>Hour:</h3>
+                //           <p>{plan.hour}</p>
+                //         </h3>
+                //     </div>
+                //   </div>
+                // </div>
+              );
+            })}
+          </div>
+        </div>
       )
-    )
-    
+    );
   }
 }
 
@@ -157,8 +162,6 @@ export default class Plans extends Component {
 //     </div>
 //   );
 // })}
-
-
 
 // {this.state.plansAll.map((plan, idx) => {
 //   return (

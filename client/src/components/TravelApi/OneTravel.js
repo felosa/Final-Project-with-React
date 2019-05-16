@@ -37,7 +37,8 @@ export default class OneTravel extends Component {
             <img alt="" src={this.state.travel.imageUrl} />
             <h2>Travel name: {this.state.travel.name}</h2>
             <h3>Country: {this.state.travel.country}</h3>
-            <h3>Leave day: {this.state.travel.description}</h3>
+            <h3>Arrive day: {this.state.travel.minDate}</h3>
+            <h3>Leave day: {this.state.travel.maxDate}</h3>
             <h3>Description: {this.state.travel.description}</h3>
             <br />
             <br />
@@ -46,12 +47,19 @@ export default class OneTravel extends Component {
             <div>
               {this.state.travel.plans.map(plan => {
                 return (
-                  <div>
-                    <img alt="" src={plan.imageUrl} />
-
+                  <div className="Flex">
+                    <div>
+                    <img className="imgPlan" alt="" src={plan.imageUrl} />
+                    </div>
+                    <div>
                     <Link actualplan={plan} to={`/plan/${plan._id}`}>
                       <p>{plan.name}</p>
                     </Link>
+                      <p>Date: {plan.date}</p>
+                      <p>Hour: {plan.hour}</p>
+                      <p>Place: {plan.place}</p>
+
+                    </div>
                     {/* <Link actualtravel={travel} to={`/travel/${travel._id}`}>
                       <p>{travel.name}</p>
                     </Link> */}

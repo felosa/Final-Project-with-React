@@ -14,7 +14,7 @@ export default class Home extends Component {
   render() {
     console.log(this.props.loggedInUser)
     return (
-      <div className="container>
+      <div className="container">
         <Switch>
           <Route exact path="/" render={() => (
             <GSignup />)}/>

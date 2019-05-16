@@ -14,7 +14,7 @@ export default class GNewTravel extends Component {
     return (
       <div className="doFlex">
         <OneTravel travel={this.props.match.params}></OneTravel>
-        <NewPlan travel={this.props.match.params}></NewPlan>
+        <NewPlan className="margincenterL" travel={this.props.match.params}></NewPlan>
       </div>
     )
   }

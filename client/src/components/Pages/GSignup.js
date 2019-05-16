@@ -7,7 +7,7 @@ export default class GSignup extends Component {
     return (
       <div className="doFlex">
         <Presentation></Presentation>
-        <Signup></Signup>
+        <Signup className="margincenterL"></Signup>
       </div>
     )
   }

@@ -8,7 +8,7 @@ export default class GTravel extends Component {
     return (
       <div className="doFlex">
         <OneTravel className="container" travel={this.props.match.params}></OneTravel>
-        <Plans className="container"></Plans>
+        <Plans className="container margincenterL"></Plans>
       </div>
     )
   }

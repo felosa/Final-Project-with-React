@@ -13,7 +13,7 @@ export default class GEditProfile extends Component {
     return (
       <div>
         <EditProfile className="container" loggedInUser={this.props.loggedInUser}></EditProfile>
-        <Travels className="container" loggedInUser={this.props.loggedInUser}></Travels>
+        <Travels className="container margincenterL" loggedInUser={this.props.loggedInUser}></Travels>
       </div>
     )
   }

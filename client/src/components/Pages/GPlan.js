@@ -13,7 +13,7 @@ export default class GPlan extends Component {
           plan={this.props.match.params}
         />
 
-        <Chat
+        <Chat className="margincenterL"
           loggedInUser={this.props.loggedInUser}
           plan={this.props.match.params}
         />

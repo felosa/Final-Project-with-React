@@ -8,7 +8,7 @@ export default class GHome extends Component {
     return (
       <div className="doFlex">
         <Presentation></Presentation>        
-        <ProfileIntro></ProfileIntro>
+        <ProfileIntro className="margincenterL"></ProfileIntro>
       </div>
     )
   }

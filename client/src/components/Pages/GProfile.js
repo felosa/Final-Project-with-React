@@ -24,7 +24,7 @@ export default class GProfile extends Component {
     return (
       <div className="doFlex">
         <Profile></Profile>
-        <Travels loggedInUser={this.props.loggedInUser}></Travels>
+        <Travels className="margincenterL" loggedInUser={this.props.loggedInUser}></Travels>
       </div>
     )
   }

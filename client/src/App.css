@@ -1,16 +1,46 @@
 .marginApp{
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
+.Flex{
+  display: flex;
+}
+.margincenterR {
+margin-left: 5%;
+}
+.margincenterL {
+  margin-left: 5%;
+  }
 .container {
-  min-width: 40%,;
-justify-content: center;}
+  min-width: 40%;
+  max-width: 40%;
+  justify-content: space-between;
+}
+
+.doList{
+  max-width: 500px;
+  flex-wrap: wrap;
+
+}
 
 .doFlex {
   display:flex;
   justify-content: center;
 }
+.doitFlex {
+  display: flex;
+}
 
 .lista {
   width: 500px;
+}
+
+.imgPlan {
+  height: 200px;
+  width: 300px;
+}
+
+.width200 {
+  width: 215px;
+  padding: 5px;
 }
