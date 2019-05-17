@@ -19,21 +19,21 @@ export default class OneTravel extends Component {
     return (
       <div className="container toRight">
         <p className="sizeTravel">
-          Description of my current trip:
+          <b>Description of my current trip:</b>
         </p>
         <br></br>
         {this.props.travel && this.props.travel.plans && (
           <div>
             <img className="imgPlan" alt="" src={this.props.travel.imageUrl} />
-            <h2>Travel name: {this.props.travel.name}</h2>
-            <h3>Country: {this.props.travel.country}</h3>
-            <h3>City: {this.props.travel.city}</h3>
-            <h3>Arrive day: {arrivalDate}</h3>
-            <h3>Leave day: {departureDate}</h3>
-            <h3>Description: {this.props.travel.description}</h3>
+            <h2><b>Travel name:</b> {this.props.travel.name}</h2>
+            <h3><b>Country:</b> {this.props.travel.country}</h3>
+            <h3><b>City: </b>{this.props.travel.city}</h3>
+            <h3><b>Arrival date:</b> {arrivalDate}</h3>
+            <h3><b>Leaving date: </b>{departureDate}</h3>
+            <h3><b>Description:</b> {this.props.travel.description}</h3>
             <br />
             <br />
-            <h3 className="sizeTravel">Current travel plans:</h3>
+            <h3 className="sizeTravel"><b>Current travel plans:</b></h3>
             <br></br>
             <div>
               {this.props.travel.plans.map(plan => {
@@ -46,9 +46,9 @@ export default class OneTravel extends Component {
                     <Link actualplan={plan} to={`/plan/${plan._id}`}>
                       <p>{plan.name}</p>
                     </Link>
-                      <p>Date: {formatDate(plan.date)}</p>
-                      <p>Hour: {plan.hour}</p>
-                      <p>Place: {plan.place}</p>
+                      <p><b>Date:</b> {formatDate(plan.date)}</p>
+                      <p><b>Time:</b> {plan.hour}</p>
+                      <p><b>Place:</b> {plan.place}</p>
                     </div>
                     
                   </div>

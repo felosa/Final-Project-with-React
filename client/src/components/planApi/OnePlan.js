@@ -82,7 +82,7 @@ export default class OnePlan extends Component {
                      <Link
           to={`/profile`}
         >
-        <button onClick={() => this.addPlan(travel._id)}><b>Add the plan to this trip:</b> <span>{travel.name}</span></button>
+        <button onClick={() => this.addPlan(travel._id)}>Add the plan to this trip: {travel.name}</button>
         </Link>
                   </div>
                 );

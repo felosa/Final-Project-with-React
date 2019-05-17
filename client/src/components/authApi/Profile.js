@@ -33,7 +33,6 @@ class Profile extends Component {
             <img className="imgProfileIntro" alt="" src={this.state.loggedInUser.imageUrl}></img>
             </div>
             <br></br>
-            <span>Languages spoken: {this.state.loggedInUser.lang}</span>
             <br></br>
             <span>Country: {this.state.loggedInUser.country}</span>
             <br></br>

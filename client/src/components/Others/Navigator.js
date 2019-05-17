@@ -32,7 +32,7 @@ render() {
       return (
         <div className="backNav Flex">
         <div className="textCenter marginNav">
-        <p>Welcome again, {this.props.loggedInUser.username}</p>
+        <p className="sizeTravel"><b>Welcome back, {this.props.loggedInUser.username}</b></p>
 
         
         <Link className="textCenter" to="/profile"><span>My profile</span></Link>

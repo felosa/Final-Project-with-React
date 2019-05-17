@@ -12,7 +12,7 @@ export default class GHome extends Component {
         </h2>
         <br></br>
         <h2 className="textCenter whiteLetter sizePresentation">
-          Now you are ready to start organising your own Travels
+          Now you are ready to start organising your own trips
         </h2>
       </div>
     )

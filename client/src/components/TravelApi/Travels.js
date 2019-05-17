@@ -38,11 +38,11 @@ export default class Travels extends Component {
    <div>
      
      <img className="imgTravel" alt="" src={travel.imageUrl}/>
-     <h2>Trip Name:</h2>
+     <h2><b>Trip Name:</b></h2>
      <Link actualtravel={travel} to={`/travel/${travel._id}`}><p>{travel.name}</p></Link>
-     <p>Country:</p> 
+     <p><b>Country:</b></p> 
      <p>{travel.country}</p> 
-     <p>City:</p> 
+     <p><b>City:</b></p> 
      <p>{travel.city}</p>
      <hr></hr> 
     </div>
@@ -50,7 +50,7 @@ export default class Travels extends Component {
  })}</div> 
 
  :
-<span>No hay viajes</span>
+<span>No trips</span>
 }
        
       </div>

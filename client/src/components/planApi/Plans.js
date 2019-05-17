@@ -55,17 +55,20 @@ export default class Plans extends Component {
     return (
       this.state.plansAll && (
         <div className="container">
-          <h2>Lista de planes</h2>
+          <h2 className="sizeTravel"><b>Plans</b></h2>
+          <br></br>
+          <br></br>
+
 
           <form onSubmit={this.handleFormSubmit} className="form">
-            <label>Arrive Date:</label>
+            <label>Arrival Date:</label>
             <input
               type="date"
               name="minDate"
               value={this.state.minDate}
               onChange={e => this.handleChangeAsDate(e)}
             />
-            <label>Leave Date:</label>
+            <label>Leaving Date:</label>
             <input
               type="date"
               name="maxDate"
@@ -95,21 +98,25 @@ export default class Plans extends Component {
                             <p>{plan.name}</p>
                           </Link>
                         </p>
-                        <p className="subtitle is-6">
-                          <h3>Date: {formatDate(plan.date)}</h3>
+                        <p >
+                          <h3><b>Date:</b> {formatDate(plan.date)}</h3>
                         </p>
-                        <p className="subtitle is-6">
-                          <h3>City: {plan.city}</h3>                          
+                        <p >
+                          <h3><b>City:</b> {plan.city}</h3>                          
                         </p>
-                        <p className="subtitle is-6">
-                          <h3>Hour: {plan.hour}</h3>
+                        <p >
+                          <h3><b>Time:</b> {plan.hour}</h3>
                           
                         </p>
+                      <p>
+                        <h3>
+                          <b>Description:</b> {plan.description}
+                        </h3>
+                      </p>
                       </div>
                     </div>
 
                     <div className="content">
-                      Description: {plan.description}
                       <br />
                     </div>
                   </div>
