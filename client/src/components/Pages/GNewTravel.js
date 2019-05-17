@@ -12,7 +12,7 @@ export default class GNewTravel extends Component {
 
   render() {
     return (
-      <div className="doFlex">
+      <div className="doFlex background">
         <Profile></Profile>
         <NewTravel className="margincenterL" loggedInUser={this.props.loggedInUser}></NewTravel>
       </div>

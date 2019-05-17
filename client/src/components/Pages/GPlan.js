@@ -7,7 +7,7 @@ export default class GPlan extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="doFlex">
+      <div className="doFlex background">
         <OnePlan
           loggedInUser={this.props.loggedInUser}
           plan={this.props.match.params}

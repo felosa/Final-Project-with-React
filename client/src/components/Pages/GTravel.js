@@ -25,7 +25,7 @@ export default class GTravel extends Component {
 
   render() {
     return this.state.travel && (
-      <div className="doFlex">
+      <div className="doFlex background">
         <OneTravel className="container" travel={this.state.travel}></OneTravel>
         <Plans city={this.state.travel.city} className="container margincenterL"></Plans>
       </div>

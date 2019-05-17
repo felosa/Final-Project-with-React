@@ -47,7 +47,7 @@ class App extends Component {
     console.log(this.state.loggedInUser)
     if (this.state.loggedInUser) {
       return (
-        <div className="marginApp">  
+        <div className="marginApp background">  
           <Navigator loggedInUser={this.state.loggedInUser} setUser={this.setTheUser}/>
           <Switch>
           

@@ -17,7 +17,6 @@ export default class Chat extends Component {
   componentDidMount() {
     const id = this.props.plan.id;
     this.servicePlan.getOnePlan(id).then(getPlan => {
-      console.log(getPlan, "plannnnnnnnn didmount");
       this.setState({
         ...this.state,
         plan: getPlan
@@ -57,26 +56,11 @@ export default class Chat extends Component {
     console.log(this.state.plan.comments);
     return (
       <div className="container">
-        <p> aqui va el chat a los comentarios</p>
-        {this.state.plan ? 
-          <div>
-            {this.state.plan.comments.map((plan, idx) => {
-              return (
-                <div>
-                  <img alt="" src={plan.authorPhoto}></img>
-                  <p>{plan.author}</p>
-                  <p>{plan.message}</p>
-                </div>
-              );
-            })}
-          </div>
-         : 
-          <div>
-            <p>no hay comentarios</p>
-          </div>
-        }
+        <p><b>Plan Chat</b></p>
+        <br></br>
+        <br></br>
         <form onSubmit={this.handleFormSubmit} className="form">
-          <label>Comment:</label>
+          <label>Write something:</label>
           <input
             type="text"
             name="message"
@@ -86,6 +70,28 @@ export default class Chat extends Component {
           <br />
           <input type="submit" value="Send comment" />
         </form>
+        <br></br>
+        <br></br>
+        {this.state.plan ? 
+          <div>
+            {this.state.plan.comments.map((plan, idx) => {
+              return (
+                <div>
+                  <div className="Flex">
+                  <img className="chatImg" alt="" src={plan.authorPhoto}></img>
+                  <p><b>{plan.author}</b></p>
+                  </div>
+                  <p className="comments">{plan.message}</p>
+                </div>
+              );
+            })}
+          </div>
+         : 
+          <div>
+            <p>no hay comentarios</p>
+          </div>
+        }
+        
       </div>
     );
   }

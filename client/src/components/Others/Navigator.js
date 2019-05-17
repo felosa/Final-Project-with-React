@@ -25,72 +25,24 @@ export default class Navigator extends Component {
   }
 
   
-  
-
-// render(){
-//   return(
-//     <div>
-//     <nav className="navbar" role="navigation" aria-label="main navigation">
-
-//   <div id="navbarBasicExample" className="navbar-menu">
-//     <div className="navbar-start">
-//       <a className="navbar-item">
-//         Home
-//       </a>
-
-//       <div className="navbar-item has-dropdown is-hoverable">
-//         <a className="navbar-link">
-//           More
-//         </a>
-
-//         <div className="navbar-dropdown">
-//           <a className="navbar-item">
-//             About
-//           </a>
-//           <a className="navbar-item">
-//             Jobs
-//           </a>
-//           <a className="navbar-item">
-//             Contact
-//           </a>
-//           <hr className="navbar-divider"/>
-//           <a className="navbar-item">
-//             Report an issue
-//           </a>
-//         </div>
-//       </div>
-//     </div>
-
-//     <div className="navbar-end">
-//       <div className="navbar-item">
-//           <Login loggedInUser={this.props.loggedInUser} setUser={this.props.setUser}></Login>
-        
-//       </div>
-//     </div>
-//   </div>
-// </nav>
-// </div>
-  
-// )
-// }
-
-
 
 render() {
     console.log(this.props.loggedInUser)
     if (this.props.loggedInUser) {
       return (
-        <div className="container">
-        
+        <div className="backNav Flex">
+        <div className="textCenter marginNav">
         <p>Welcome again, {this.props.loggedInUser.username}</p>
+
         
-        <Link to="/profile"><span>Mi perfil</span></Link>
+        <Link className="textCenter" to="/profile"><span>My profile</span></Link>
+        </div>
         <div className="navbar-end">
-        <div className="imgProf">
-          <img alt="" src={this.props.loggedInUser.imageUrl}></img>
+        <div className="imgProfNav">
+          <img className="imgProfNav" alt="" src={this.props.loggedInUser.imageUrl}></img>
         </div>
         <Link to='/'>
-                <button className="button is-primary" onClick={() => this.logoutUser()}>Logout</button>
+                <button className="myButton" onClick={() => this.logoutUser()}>Logout</button>
         </Link>
         </div>
         </div>
@@ -98,7 +50,7 @@ render() {
     }
     else {
     return (
- <div className="navbar-end">
+ <div className=" container navbar-end">
       <div className="navbar-item">
       <Login loggedInUser={this.props.loggedInUser} setUser={this.props.setUser}></Login>
     

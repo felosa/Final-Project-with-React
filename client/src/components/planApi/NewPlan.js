@@ -100,41 +100,40 @@ export default class newPlan extends Component {
       return <Redirect to={`/travel/${this.props.travel.id}`} />
     }
     return (
-        <div className="container">
+        <div className="container toRight">
         <form onSubmit={this.handleFormSubmit} className="form">
           <label>Plan Name:</label>
+          <br/>
           <input type="text" name="name" value={this.state.name} onChange={ e => this.handleChange(e)}/>
           <br></br>
           <label>City:</label>
+          <br/>
           <input type="text" name="city" value={this.state.city} onChange={ e => this.handleChange(e)} />
           <br></br>
-          <label>Type:</label>
-          <input type="text" name="type" value={this.state.type} onChange={ e => this.handleChange(e)}/>
-          <br></br>
           <label>Description:</label>
+          <br/>
           <input type="text" name="description" value={this.state.description} onChange={ e => this.handleChange(e)} />
           <br></br>
-          <label>Languaje:</label>
-          <input type="text" name="lang" value={this.state.lang} onChange={ e => this.handleChange(e)}/>
-          <br></br>
-          <label>Genre:</label>
-          <input type="text" name="genre" value={this.state.genre} onChange={ e => this.handleChange(e)}/>
-          <br></br>
-          <label>hour:</label>
+          <label>Time:</label>
+          <br/>
           <input type="text" name="hour" value={this.state.hour} onChange={ e => this.handleChange(e)} />
           <br></br>
           <label>Place:</label>
+          <br/>
           <input type="text" name="place" value={this.state.place} onChange={ e => this.handleChange(e)}/>
           <br></br>
           <label>Date:</label>
+          <br/>
           <input type="date" name="date" value={this.state.date} onChange={ e => this.handleChangeAsDate(e)} />
           <br></br>
+          <label>Upload your photo:</label>
+          <br/>
           <input 
             type="file" 
             onChange={(e) => this.handleFileUpload(e)} />
           <br></br>
-          
-          <input type="submit" value="Crear plan" />
+          <br/>
+          <input type="submit" value="Add Plan" />
         </form>
   
       

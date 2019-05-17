@@ -27,17 +27,24 @@ export default class Travels extends Component {
 
   render() {
     return this.props.loggedInUser && (
-      <div className="container">
-        <p>Lista de travels de <span>{this.props.loggedInUser.username}</span></p>
-        <Link to="/newtravel"><button>New Travel</button></Link>
+      <div className="container textCenter">
+        <p className="titles"><span><b>{this.props.loggedInUser.username}'s Trip List</b></span></p>
+        <br></br>
+        <Link to="/newtravel"><button>New Trip</button></Link>
 {
  this.props.loggedInUser.travels ?
  <div>{this.props.loggedInUser.travels.map((travel)=>{
    return (
    <div>
-     <img alt="" src={travel.imageUrl}/>
+     
+     <img className="imgTravel" alt="" src={travel.imageUrl}/>
+     <h2>Trip Name:</h2>
      <Link actualtravel={travel} to={`/travel/${travel._id}`}><p>{travel.name}</p></Link>
-     <p>Country: {travel.country}</p> 
+     <p>Country:</p> 
+     <p>{travel.country}</p> 
+     <p>City:</p> 
+     <p>{travel.city}</p>
+     <hr></hr> 
     </div>
    )
  })}</div> 

@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import 'bulma/css/bulma.css';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter className="backgroundGeneral">
       <App />
   </BrowserRouter>, 
   document.getElementById('root')

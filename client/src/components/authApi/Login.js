@@ -39,12 +39,9 @@ class Login extends Component {
   };
 
   render() {
-    // if (this.props.loggedInUser) {
-    //   return <Redirect to="/" />;
-    // }
     return (
       <div className="navbar-item">
-          <form onSubmit={e => this.handleFormSubmit(e)}>
+          <form className="Flex" onSubmit={e => this.handleFormSubmit(e)}>
           <label>Username:</label>
           <input
             type="text"
@@ -62,7 +59,7 @@ class Login extends Component {
           />
 
           <div>
-            <input className="myButton" type="submit" value="Login" />
+           <input className="myButtonLog" type="submit" value="Login" />
           </div>
         </form>
       </div>

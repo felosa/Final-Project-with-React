@@ -6,9 +6,14 @@ import Presentation from '../Others/Presentation';
 export default class GHome extends Component {
   render() {
     return (
-      <div className="doFlex">
-        <Presentation></Presentation>        
-        <ProfileIntro className="margincenterL"></ProfileIntro>
+      <div className="plane">
+        <h2 className="textCenter paddingTop whiteLetter sizePresentation">
+          Welcome!
+        </h2>
+        <br></br>
+        <h2 className="textCenter whiteLetter sizePresentation">
+          Now you are ready to start organising your own Travels
+        </h2>
       </div>
     )
   }

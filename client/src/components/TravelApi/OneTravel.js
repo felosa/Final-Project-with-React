@@ -17,14 +17,14 @@ export default class OneTravel extends Component {
     const departureDate = formatDate(this.props.travel.maxDate)
 
     return (
-      <div className="container">
-        <p>
-          Viaje actual donde se muestran los planes de ese viaje, buscando y
-          anadiendo planes
+      <div className="container toRight">
+        <p className="sizeTravel">
+          Description of my current trip:
         </p>
+        <br></br>
         {this.props.travel && this.props.travel.plans && (
           <div>
-            <img alt="" src={this.props.travel.imageUrl} />
+            <img className="imgPlan" alt="" src={this.props.travel.imageUrl} />
             <h2>Travel name: {this.props.travel.name}</h2>
             <h3>Country: {this.props.travel.country}</h3>
             <h3>City: {this.props.travel.city}</h3>
@@ -33,8 +33,8 @@ export default class OneTravel extends Component {
             <h3>Description: {this.props.travel.description}</h3>
             <br />
             <br />
-
-            <h3>Planes en los que estas apuntado en este viaje:</h3>
+            <h3 className="sizeTravel">Current travel plans:</h3>
+            <br></br>
             <div>
               {this.props.travel.plans.map(plan => {
                 return (
@@ -49,11 +49,8 @@ export default class OneTravel extends Component {
                       <p>Date: {formatDate(plan.date)}</p>
                       <p>Hour: {plan.hour}</p>
                       <p>Place: {plan.place}</p>
-
                     </div>
-                    {/* <Link actualtravel={travel} to={`/travel/${travel._id}`}>
-                      <p>{travel.name}</p>
-                    </Link> */}
+                    
                   </div>
                 );
               })}

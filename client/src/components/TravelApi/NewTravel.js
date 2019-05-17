@@ -110,9 +110,10 @@ export default class newTravel extends Component {
       return <Redirect to="/profile" />;
     }
     return (
-      <div className="container">
+      <div className="container heigthMax">
         <form onSubmit={this.handleFormSubmit} className="form">
           <label>Travel Name:</label>
+          <br></br>
           <input
             type="text"
             name="name"
@@ -121,6 +122,8 @@ export default class newTravel extends Component {
           />
           <br />
           <label>City:</label>
+          <br></br>
+
           <input
             type="text"
             name="city"
@@ -129,6 +132,7 @@ export default class newTravel extends Component {
           />
           <br />
           <label>Country:</label>
+          <br></br>
           <input
             type="text"
             name="country"
@@ -137,6 +141,7 @@ export default class newTravel extends Component {
           />
           <br />
           <label>Description:</label>
+          <br></br>
           <input
             type="text"
             name="description"
@@ -144,8 +149,8 @@ export default class newTravel extends Component {
             onChange={e => this.handleChange(e)}
           />
           <br />
-          <br />
           <label>Arrive Date:</label>
+          <br></br>
           <input
             type="date"
             name="minDate"
@@ -153,8 +158,8 @@ export default class newTravel extends Component {
             onChange={e => this.handleChangeAsDate(e)}
           />
           <br />
-          <br />
           <label> Date:</label>
+          <br></br>
           <input
             type="date"
             name="maxDate"
@@ -162,10 +167,11 @@ export default class newTravel extends Component {
             onChange={e => this.handleChangeAsDate(e)}
           />
           <br />
-
+          <label> Upload a photo:</label>
+          <br></br>
           <input type="file" onChange={e => this.handleFileUpload(e)} />
           <br />
-
+<br/>
           <input type="submit" value="Crear" />
         </form>
       </div>

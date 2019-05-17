@@ -24,26 +24,21 @@ class Profile extends Component {
   render() {
     console.log(this.state.loggedInUser)
     return this.state.loggedInUser && (
-      <div className="container">
+      <div className="container textCenter">
          <div className="">
-            <h2>
-              <span>Hello, this is your profile {this.state.loggedInUser.username}</span>
+            <h2 className="paddingTop">
+              <span className="titles"><b>Hello, this is your profile {this.state.loggedInUser.username}</b></span>
             </h2>
-            <div>
-            <img className="imgProfi" alt="" src={this.state.loggedInUser.imageUrl}></img>
+            <div className="paddingTop">
+            <img className="imgProfileIntro" alt="" src={this.state.loggedInUser.imageUrl}></img>
             </div>
             <br></br>
-            <span>Languajes that I speak: {this.state.loggedInUser.lang}</span>
+            <span>Languages spoken: {this.state.loggedInUser.lang}</span>
             <br></br>
             <span>Country: {this.state.loggedInUser.country}</span>
             <br></br>
             <span>This is your description: {this.state.loggedInUser.description}</span>
             <br></br>
-            <span>Genre: {this.state.loggedInUser.genre}</span>
-            <br></br>
-            <span>Age: {this.state.loggedInUser.year}</span>
-            <br></br>
-            
           </div>
           
        

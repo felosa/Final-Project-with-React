@@ -1,3 +1,9 @@
 .bigbox {
   display: flex;
   }
+
+  .plane {
+    background-image: url("../../planepeq.jpg");
+    background-size: cover;
+    height: 90vh;
+  }

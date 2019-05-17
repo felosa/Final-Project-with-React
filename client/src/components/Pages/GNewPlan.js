@@ -26,7 +26,7 @@ export default class GNewTravel extends Component {
   render() {
     console.log(this.props.match.params)
     return this.state.travel && (
-      <div className="doFlex">
+      <div className="doFlex background">
         <OneTravel travel={this.state.travel}></OneTravel>
         <NewPlan className="margincenterL" travel={this.props.match.params}></NewPlan>
       </div>

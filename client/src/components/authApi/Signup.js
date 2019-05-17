@@ -86,29 +86,28 @@ class Signup extends Component {
     
     return(
       <div className="container">
-      <div className="formStyle">
+      <div className="formStyle formSignup whiteLetter">
         <form onSubmit={this.handleFormSubmit} className="form">
+          
+          <h2>Signup now</h2>
           <label>Username:</label>
+          <br></br>
           <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
           <br></br>
-          <label>Password:</label>
+          <label>Password:  </label>
+          <br></br>
           <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
           <br></br>
-          <label>Languaje:</label>
-          <input type="text" name="lang" value={this.state.lang} onChange={ e => this.handleChange(e)}/>
+          <label>Country of origin:</label>
           <br></br>
-          <label>Description:</label>
-          <input type="text" name="description" value={this.state.description} onChange={ e => this.handleChange(e)}/>
-          <br></br>
-          <label>Country:</label>
           <input type="text" name="country" value={this.state.country} onChange={ e => this.handleChange(e)} />
           <br></br>
-          <label>Genre:</label>
-          <input type="text" name="genre" value={this.state.genre} onChange={ e => this.handleChange(e)}/>
+          <label>Personal Description:</label>
           <br></br>
-          <label>Year:</label>
-          <input type="number" name="year" value={this.state.year} onChange={ e => this.handleChange(e)} />
+          <input type="text" name="description" value={this.state.description} onChange={ e => this.handleChange(e)} />
           <br></br>
+          <br></br>
+          <label>Upload your photo:</label>
           <input 
             type="file" 
             onChange={(e) => this.handleFileUpload(e)} />

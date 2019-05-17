@@ -22,7 +22,7 @@ export default class GProfile extends Component {
   render() {
     // debugger
     return (
-      <div className="doFlex">
+      <div className="doFlex background">
         <Profile></Profile>
         <Travels className="margincenterL" loggedInUser={this.props.loggedInUser}></Travels>
       </div>
