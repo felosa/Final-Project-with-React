@@ -53,7 +53,7 @@ export default class OnePlan extends Component {
             <h2 className="sizeTravel"><b>Author of the plan</b></h2>
             <h3>{this.state.plan.author.username}</h3>
             <br></br>
-            <h3 className="sizeTravel"><b>Participants:</b></h3>
+            <h3 ateN><b>Participants:</b></h3>
             <div>
               {this.state.plan.participants.map(person => {
                 return (
