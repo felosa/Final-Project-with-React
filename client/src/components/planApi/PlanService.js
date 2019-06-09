@@ -43,7 +43,6 @@ class PlanService {
   getOnePlan = (id) => {
     return this.service.get(`/plan/one/${id}`)
     .then(response => {
-      console.log("heyyyyyyyyyy   hhhhhhhhhh")
       return response.data})
     .catch(err => console.error(err))
   }

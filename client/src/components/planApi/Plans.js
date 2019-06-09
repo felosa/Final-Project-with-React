@@ -104,6 +104,7 @@ export default class Plans extends Component {
                         <p >
                           <h3><b>City:</b> {plan.city}</h3>                          
                         </p>
+                       
                         <p >
                           <h3><b>Time:</b> {plan.hour}</h3>
                           
