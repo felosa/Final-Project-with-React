@@ -102,7 +102,7 @@ export default class newPlan extends Component {
     return (
         <div className="container toRight">
         <form onSubmit={this.handleFormSubmit} className="form">
-          <label>Plan Name:</label>
+          <label>Plan  Name:</label>
           <br/>
           <input type="text" name="name" value={this.state.name} onChange={ e => this.handleChange(e)}/>
           <br></br>
